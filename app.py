@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, request, render_template, redirect, jsonify
 import pandas as pd
 
 
@@ -9,6 +9,28 @@ app = Flask(__name__)
 def home():
 
     return render_template("index.html")
+
+
+@app.route("/test-survey")
+def test_survey():
+
+    return render_template("survey.html")
+
+
+@app.route("/result", methods=["GET", "POST"])
+def send():
+    if request.method == "POST":
+        data = {}
+
+        team = request.form["team"]
+        opponent = request.form["opponent"]
+        sacked = request.form["sacked"]
+
+        data["team"] = team
+        data["opponent"] = opponent
+        data['sacked'] = sacked
+
+        return render_template("result.html", data=data)
 
 
 @app.route("/data")
