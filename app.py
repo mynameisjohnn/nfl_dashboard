@@ -23,10 +23,10 @@ def data():
     return jsonify(football_data)
 
 
-@app.route("/data-2015-2017")
+@app.route("/data-prediction")
 def data_2015_2017():
 
-    path = "data/nfl_2015_2017_prediction.csv"
+    path = "data/nfl_neural_prediction.csv"
 
     df = pd.read_csv(path, encoding="utf-8")
 
