@@ -23,27 +23,25 @@
           <div class="form-group">
             <label for="exampleFormControlSelect1">Team</label>
             <select class="form-control" id="exampleFormControlSelect1" name="team">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {% for team in form.teams %}
+              <option>{{ team }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Oppenent</label>
             <select class="form-control" id="exampleFormControlSelect1" name="opponent">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {% for team in form.teams %}
+              <option>{{ team }}</option>
+              {% endfor %}
             </select>
           </div>
+          {% for item in form.form_data[2:] %}
           <div class="form-group">
-            <label for="exampleFormControlInput1">Sacked</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
+            <label for="exampleFormControlInput1">{{ item.feature }}</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="{{ item.form_name }}" placeholder="{{ item.placeholder }}">
           </div>
+          {% endfor %}
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>

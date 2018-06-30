@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, jsonify
 import pandas as pd
+from build_dataframe import default_features, form_data
 
 
 app = Flask(__name__)
@@ -13,22 +14,53 @@ def home():
 
 @app.route("/test-survey")
 def test_survey():
+    form = {}
 
-    return render_template("survey.html")
+    teams = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GBP",
+             "HOU", "IND", "JAX", "KCC", "LAC", "LAR", "MIA", "MIN", "NEP", "NOS", "NYG", "NYJ",
+             "OAK", "PHI", "PIT", "SEA", "SFO", "TBB", "TEN", "WAS"]
+
+    form["teams"] = teams
+    form["form_data"] = form_data
+
+    return render_template("survey.html", form=form)
 
 
-@app.route("/result", methods=["GET", "POST"])
+@app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "POST":
         data = {}
 
         team = request.form["team"]
         opponent = request.form["opponent"]
+        third = request.form["third"]
+        third_allowed = request.form["third-allowed"]
+        top = request.form["top"]
+        first_downs = request.form["first-downs"]
+        first_downs_allowed = request.form["first-downs-allowed"]
+        ha = request.form["ha"]
+        pass_yards = request.form["pass-yards-allowed"]
+        pass_yards_allowed = request.form["pass-yards-allowed"]
+        penalty_yards = request.form["penalty-yards"]
+        plays = request.form["plays"]
+        rush_yards = request.form["rush-yards"]
+        rush_yards_allowed = request.form["rush_yards_allowed"]
         sacked = request.form["sacked"]
+        sacks = request.form["sacks"]
+        takeaways = request.form["takeaways"]
+        total_yards = request.form["total-yards"]
+        total_yards_allowed = request.form["total-yards-allowed"]
+        turnovers = request.form["turnovers"]
 
-        data["team"] = team
-        data["opponent"] = opponent
-        data['sacked'] = sacked
+        features = [team, opponent, third, third_allowed, top, first_downs,
+                    first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards, plays,
+                    rush_yards, rush_yards_allowed, sacked, sacks, takeaways, total_yards,
+                    total_yards_allowed, turnovers]
+
+        for feature in features:
+            data[f"{feature}"] = feature
+
+        default_df = pd.DataFrame(default_features)
 
         return render_template("result.html", data=data)
 
