@@ -1,133 +1,53 @@
-default_features = [
-    {
-        '3d%': 0.0,
-        '3d%_allowed': 0.0,
-        'TOP': 0.0,
-        'first_downs': 0.0,
-        'first_downs_allowed': 0.0,
-        'ha': 0.0,
-        'opp_ARI': 0.0,
-        'opp_ATL': 0.0,
-        'opp_BAL': 0.0,
-        'opp_BUF': 0.0,
-        'opp_CAR': 0.0,
-        'opp_CHI': 0.0,
-        'opp_CIN': 0.0,
-        'opp_CLE': 0.0,
-        'opp_DAL': 0.0,
-        'opp_DEN': 0.0,
-        'opp_DET': 0.0,
-        'opp_GBP': 0.0,
-        'opp_HOU': 0.0,
-        'opp_IND': 0.0,
-        'opp_JAX': 0.0,
-        'opp_KCC': 0.0,
-        'opp_LAC': 0.0,
-        'opp_LAR': 0.0,
-        'opp_MIA': 0.0,
-        'opp_MIN': 0.0,
-        'opp_NEP': 0.0,
-        'opp_NOS': 0.0,
-        'opp_NYG': 0.0,
-        'opp_NYJ': 0.0,
-        'opp_OAK': 0.0,
-        'opp_PHI': 0.0,
-        'opp_PIT': 0.0,
-        'opp_SEA': 0.0,
-        'opp_SFO': 0.0,
-        'opp_TBB': 0.0,
-        'opp_TEN': 0.0,
-        'opp_WAS': 0.0,
-        'pass_yards': 0.0,
-        'pass_yards_allowed': 0.0,
-        'penalty_yards': 0.0,
-        'plays': 0.0,
-        'rush_yards': 0.0,
-        'rush_yards_allowed': 0.0,
-        'sacked': 0.0,
-        'sacks': 0.0,
-        'takeaways': 0.0,
-        'team_ARI': 0.0,
-        'team_ATL': 0.0,
-        'team_BAL': 0.0,
-        'team_BUF': 0.0,
-        'team_CAR': 0.0,
-        'team_CHI': 0.0,
-        'team_CIN': 0.0,
-        'team_CLE': 0.0,
-        'team_DAL': 0.0,
-        'team_DEN': 0.0,
-        'team_DET': 0.0,
-        'team_GBP': 0.0,
-        'team_HOU': 0.0,
-        'team_IND': 0.0,
-        'team_JAX': 0.0,
-        'team_KCC': 0.0,
-        'team_LAC': 0.0,
-        'team_LAR': 0.0,
-        'team_MIA': 0.0,
-        'team_MIN': 0.0,
-        'team_NEP': 0.0,
-        'team_NOS': 0.0,
-        'team_NYG': 0.0,
-        'team_NYJ': 0.0,
-        'team_OAK': 0.0,
-        'team_PHI': 0.0,
-        'team_PIT': 0.0,
-        'team_SEA': 0.0,
-        'team_SFO': 0.0,
-        'team_TBB': 0.0,
-        'team_TEN': 0.0,
-        'team_WAS': 0.0,
-        'total_yards': 0.0,
-        'total_yards_allowed': 0.0,
-        'turnovers': 0.0
-    }
-]
+import pandas as pd
+import numpy as np
 
-form_data = [
-    {'feature': 'Team', 'form_name': 'team', 'placeholder': 'team'},
-    {'feature': 'Opponent', 'form_name': 'opponent', 'placeholder': 'opponent'},
-    {'feature': 'Third', 'form_name': 'third', 'placeholder': 'third'},
-    {'feature': 'Third Allowed',
-     'form_name': 'third-allowed',
-     'placeholder': 'third-allowed'},
-    {'feature': 'TOP', 'form_name': 'top', 'placeholder': 'top'},
-    {'feature': 'First Downs',
-     'form_name': 'first-downs',
-     'placeholder': 'first-downs'},
-    {'feature': 'First Downs Allowed',
-     'form_name': 'first-downs-allowed',
-     'placeholder': 'first-downs-allowed'},
-    {'feature': 'Home or Away', 'form_name': 'ha', 'placeholder': 'ha'},
-    {'feature': 'Pass Yards',
-     'form_name': 'pass-yards',
-     'placeholder': 'pass-yards'},
-    {'feature': 'Pass Yards Allowed',
-     'form_name': 'pass-yards-allowed',
-     'placeholder': 'pass-yards-allowed'},
-    {'feature': 'Penalty Yards',
-     'form_name': 'penalty-yards',
-     'placeholder': 'penalty-yards'},
-    {'feature': 'Plays', 'form_name': 'plays', 'placeholder': 'plays'},
-    {'feature': 'Rush Yards',
-     'form_name': 'rush-yards',
-     'placeholder': 'rush-yards'},
-    {'feature': 'Rush Yards Allowed',
-     'form_name': 'rush-yards-allowed',
-     'placeholder': 'rush-yards-allowed'},
-    {'feature': 'Sacked', 'form_name': 'sacked', 'placeholder': 'sacked'},
-    {'feature': 'Sacks', 'form_name': 'sacks', 'placeholder': 'sacks'},
-    {'feature': 'Takeaways',
-     'form_name': 'takeaways',
-     'placeholder': 'takeaways'},
-    {'feature': 'Total Yards',
-     'form_name': 'total-yards',
-     'placeholder': 'total-yards'},
-    {'feature': 'Total Yards Allowed',
-     'form_name': 'total-yards-allowed',
-     'placeholder': 'total-yards-allowed'},
-    {'feature': 'Turnovers',
-     'form_name': 'turnovers',
-     'placeholder': 'turnovers'}
-]
+
+def get_default_df():
+
+    df = pd.read_csv("data/nfl.csv")
+
+    # Grab dummy variables
+    dummy_vars = pd.get_dummies(df[["opp", "team"]])
+
+    # Add our dummy columns into the features df
+    df[list(dummy_vars.columns)] = dummy_vars
+
+    # Define the features
+    feature_df = df.drop(["result", "date", "opp", "team", "margin",
+                          "points", "points_allowed", "total_points"], axis=1)
+
+    # Grab column names
+    columns = list(feature_df.columns)
+
+    zeros = np.zeros(shape=(1, 82))
+
+    default_df = pd.DataFrame(zeros, columns=columns)
+
+    return default_df
+
+
+def get_form_data():
+    features = ["Team", "Opponent", "Third", "Third Allowed", "TOP", "First Downs",
+                "First Downs Allowed", "Home or Away", "Pass Yards", "Pass Yards Allowed",
+                "Penalty Yards", "Plays", "Rush Yards", "Rush Yards Allowed", "Sacked", "Sacks",
+                "Takeaways", "Total Yards", "Total Yards Allowed", "Turnovers"]
+
+    form_names = ["team", "opp", "third_per", "third_per_allowed", "TOP", "first_downs",
+                  "first_downs_allowed", "ha", "pass_yards", "pass_yards_allowed", "penalty_yards",
+                  "plays", "rush_yards", "rush_yards_allowed", "sacked", "sacks", "takeaways",
+                  "total_yards", "total_yards_allowed", "turnovers"]
+
+    placeholders = ["team", "opponent", "third", "third-allowed", "top", "first-downs",
+                    "first-downs-allowed", "ha", "pass-yards", "pass-yards-allowed", "penalty-yards",
+                    "plays", "rush-yards", "rush-yards-allowed", "sacked", "sacks", "takeaways",
+                    "total-yards", "total-yards-allowed", "turnovers"]
+
+    form_df = pd.DataFrame({
+        "feature": features,
+        "form_name": form_names,
+        "placeholder": placeholders
+    })
+
+    form_data = form_df.to_dict(orient="records")
+
+    return form_data, form_names

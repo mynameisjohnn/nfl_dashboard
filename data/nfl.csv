@@ -1,4 +1,4 @@
-3d%,3d%_allowed,TOP,date,first_downs,first_downs_allowed,ha,margin,opp,pass_yards,pass_yards_allowed,penalty_yards,plays,points,points_allowed,result,rush_yards,rush_yards_allowed,sacked,sacks,takeaways,team,total_points,total_yards,total_yards_allowed,turnovers
+third_per,third_per_allowed,TOP,date,first_downs,first_downs_allowed,ha,margin,opp,pass_yards,pass_yards_allowed,penalty_yards,plays,points,points_allowed,result,rush_yards,rush_yards_allowed,sacked,sacks,takeaways,team,total_points,total_yards,total_yards_allowed,turnovers
 0.307692308,0.285714286,28.35,9/10/2009,18,19,away,-3,PIT,234,321,28,61,0,3,Loss,86,36,1,4,3,TEN,3,320,357,2
 0.285714286,0.307692308,36.18333333,9/10/2009,19,18,home,3,TEN,321,234,60,70,3,0,Win,36,86,4,1,2,PIT,3,357,320,3
 0.363636364,0.4,29.11666667,9/13/2009,16,19,away,-12,ATL,163,213,27,56,7,19,Loss,96,68,4,2,0,MIA,26,259,281,4

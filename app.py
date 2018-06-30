@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, redirect, jsonify
+from flask import Flask, request, render_template, jsonify
 import pandas as pd
-from build_dataframe import default_features, form_data
+from keras.models import load_model
+from build_dataframe import get_default_df, get_form_data
 
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ def home():
 
 @app.route("/predictions")
 def predict():
+    pass
 
 
 @app.route("/test-survey")
@@ -25,6 +27,9 @@ def test_survey():
              "OAK", "PHI", "PIT", "SEA", "SFO", "TBB", "TEN", "WAS"]
 
     form["teams"] = teams
+
+    form_data, form_names = get_form_data()
+
     form["form_data"] = form_data
 
     return render_template("survey.html", form=form)
@@ -33,72 +38,71 @@ def test_survey():
 @app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "POST":
-        data = {}
+        # data = {}
 
         team = request.form["team"]
-        opponent = request.form["opponent"]
-        third = request.form["third"]
-        third_allowed = request.form["third-allowed"]
-        top = request.form["top"]
-        first_downs = request.form["first-downs"]
-        first_downs_allowed = request.form["first-downs-allowed"]
+        opponent = request.form["opp"]
+        third = request.form["third_per"]
+        third_allowed = request.form["third_per_allowed"]
+        top = request.form["TOP"]
+        first_downs = request.form["first_downs"]
+        first_downs_allowed = request.form["first_downs_allowed"]
         ha = request.form["ha"]
-        pass_yards = request.form["pass-yards-allowed"]
-        pass_yards_allowed = request.form["pass-yards-allowed"]
-        penalty_yards = request.form["penalty-yards"]
+        pass_yards = request.form["pass_yards"]
+        pass_yards_allowed = request.form["pass_yards_allowed"]
+        penalty_yards = request.form["penalty_yards"]
         plays = request.form["plays"]
-        rush_yards = request.form["rush-yards"]
-        rush_yards_allowed = request.form["rush-yards-allowed"]
+        rush_yards = request.form["rush_yards"]
+        rush_yards_allowed = request.form["rush_yards_allowed"]
         sacked = request.form["sacked"]
         sacks = request.form["sacks"]
         takeaways = request.form["takeaways"]
-        total_yards = request.form["total-yards"]
-        total_yards_allowed = request.form["total-yards-allowed"]
+        total_yards = request.form["total_yards"]
+        total_yards_allowed = request.form["total_yards_allowed"]
         turnovers = request.form["turnovers"]
-
-        # form_names = ["team", "opponent", "third", "third-allowed", "top", "first-downs",
-        #               "first-downs-allowed", "ha", "pass-yards", "pass-yards-allowed", "penalty-yards",
-        #               "plays", "rush-yards", "rush-yards-allowed", "sacked", "sacks", "takeaways",
-        #               "total-yards", "total-yards-allowed", "turnovers"]
-
-        form_names = []
-
-        for item in form_data:
-            form_names.append(item["form_name"])
 
         feature_values = [team, opponent, third, third_allowed, top, first_downs,
                           first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards,
                           plays, rush_yards, rush_yards_allowed, sacked, sacks, takeaways,
                           total_yards, total_yards_allowed, turnovers]
 
-        # print(feature_values)
+        default_df = get_default_df()
 
-        model_input_dict = {}
+        model_input_df = default_df.copy()
 
-        for i in range(len(form_names)):
-            model_input_dict[form_names[i]] = feature_values[i]
+        form_data, form_names = get_form_data()
 
-        print(model_input_dict)
-
-        default_df = pd.DataFrame(default_features)
+        model_input_dict = dict(zip(form_names, feature_values))
 
         columns = list(default_df.columns)
 
-        # Add only keys to data dictionary
-        # for column in columns:
-        #     data.add(column)
+        for column in columns:
+            for key, value in model_input_dict.items():
 
-        # Now add values to each key
-        # for key in data.keys():
+                if key == column:
+                    model_input_df[column] = value
 
-        for value in feature_values:
-            data[f"{value}"] = value
+                elif f"{key}_{value}" == column:
+                    model_input_df[column] = 1
+
+        ha_value = model_input_df["ha"][0]
+
+        if ha_value == "Home":
+            model_input_df["ha"] = 0
+        elif ha_value == "Away":
+            model_input_df["ha"] = 1
+
+        data = model_input_df.to_dict(orient="records")
+
+        # for value in feature_values:
+        #     data[f"{value}"] = value
 
         return render_template("result.html", data=data)
 
 
 @app.route("/data")
 def data():
+    pass
 
 
 @app.route("/tables")
