@@ -12,6 +12,10 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/predictions")
+def predict():
+
+
 @app.route("/test-survey")
 def test_survey():
     form = {}
@@ -96,13 +100,17 @@ def send():
 @app.route("/data")
 def data():
 
-    path = "data/nfl_2017.csv"
 
-    df = pd.read_csv(path, encoding="utf-8")
+@app.route("/tables")
+def tables():
 
-    football_data = df.to_dict(orient="records")
+    return render_template("tables.html")
 
-    return jsonify(football_data)
+
+@app.route("/howitworks")
+def howitworks():
+
+    return render_template("howitworks.html")
 
 
 @app.route("/data-prediction")
@@ -112,7 +120,7 @@ def data_2015_2017():
 
     df = pd.read_csv(path, encoding="utf-8")
 
-    football_data = df.to_dict(orient="records")
+    football_data = df.to_dict('split')
 
     return jsonify(football_data)
 
