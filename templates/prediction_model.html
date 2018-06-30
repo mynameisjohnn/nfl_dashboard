@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="icon" href="../static/img/nfllogo.jpg"/>
-    <title>Material Design Bootstrap</title>
+    <title>NFL Prediction Dashboard </title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -55,7 +55,7 @@
                     <div class="card-body d-sm-flex justify-content-between">
     
                         <h4 class="mb-2 mb-sm-0 pt-1">
-                            <a href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Home Page</a>
+                            <a href="/" target="_blank">Home Page</a>
                             <span>/</span>
                             <span>Prediction Model</span>
                         </h4>
@@ -67,227 +67,179 @@
     <div class="row">
 
     <!-- Grid column -->
-    <div class="col-md-6 mb-4">
-
-        <div class="card card-cascade narrower">
-            <div class="container-fluid">
-                    <form method="POST" action="/result">
-                        <div class="form-group">
-                            <br>
-                        <label for="exampleFormControlSelect1">Team</label>
+    <form method="POST" action="/result"></form>
+        <div class="col-md-6 mb-4">
+            <div class="card card-cascade narrower">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <br>
+                        <label for="exampleFormControlSelect1">Home Team</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="team">
                             <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
+                            <option value="ARI">Arizona Cardinals</option>
+                            <option value="ATL">Atlanta Falcons</option>
+                            <option value="BAL">Baltimore Ravens</option>
+                            <option value="BUF">Buffalo Bills</option>
+                            <option value="CAR">Carolina Panthers</option>
+                            <option value="CHI">Chicago Bears</option>
+                            <option value="CIN">Cincinnati Bengals</option>
+                            <option value="CLE">Cleveland Browns</option>
+                            <option value="DAL">Dallas Cowboys</option>
+                            <option value="DEN">Denver Broncos</option>
+                            <option value="DET">Detroit Lions</option>
+                            <option value="GB">Green Bay Packers</option>
+                            <option value="HOU">Houston Texans</option>
+                            <option value="IND">Indianapolis Colts</option>
+                            <option value="JAX">Jacksonville Jaguars</option>
+                            <option value="KC">Kansas City Chiefs</option>
+                            <option value="LAC">Los Angeles Chargers</option>
+                            <option value="LAR">Los Angeles Rams</option>
+                            <option value="MIA">Miami Dolphins</option>
+                            <option value="MIN">Minnesota Vikings</option>
+                            <option value="NE">New England Patriots</option>
+                            <option value="NO">New Orleans Saints</option>
+                            <option value="NYG">New York Giants</option>
+                            <option value="NYJ">New York Jets</option>
+                            <option value="OAK">Oakland Raiders</option>
+                            <option value="PHI">Philadelphia Eagles</option>
+                            <option value="PIT">Pittsburgh Steelers</option>
+                            <option value="SEA">San Francisco 49ers</option>
+                            <option value="SF">Seattle Seahawks</option>
+                            <option value="TB">Tampa Bay Buccaneers</option>
+                            <option value="TEN">Tennessee Titans</option>
+                            <option value="WAS">Washington Redskins</option>
                         </select>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Pass Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="pass_yards" placeholder="Pass Yards...">
                         </div>
                         <div class="form-group">
-                        <label for="exampleFormControlSelect1">Oppenent</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="opponent">
+                        <label for="exampleFormControlInput1">Rush Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="rush_yards" placeholder="Rush Yards...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Total Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="total_yards" placeholder="Total Yards...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Time of Possession</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="TOP" placeholder="Time of Possession...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">First Downs</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="first_downs" placeholder="First Downs...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Penalty Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="penalty_yards" placeholder="Penalty Yards...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Sacks</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Sacks...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Turnovers</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="turnovers" placeholder="Turnovers...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Third Downs</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="third_per" placeholder="Third Downs...">
+                        </div>
+                    </div>                     
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card card-cascade narrower">
+                <div class="container-fluid">        
+                    <div class="form-group">
+                        <br>
+                        <label for="exampleFormControlSelect1">Away Team</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="team">
                             <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
+                            <option value="ARI">Arizona Cardinals</option>
+                            <option value="ATL">Atlanta Falcons</option>
+                            <option value="BAL">Baltimore Ravens</option>
+                            <option value="BUF">Buffalo Bills</option>
+                            <option value="CAR">Carolina Panthers</option>
+                            <option value="CHI">Chicago Bears</option>
+                            <option value="CIN">Cincinnati Bengals</option>
+                            <option value="CLE">Cleveland Browns</option>
+                            <option value="DAL">Dallas Cowboys</option>
+                            <option value="DEN">Denver Broncos</option>
+                            <option value="DET">Detroit Lions</option>
+                            <option value="GB">Green Bay Packers</option>
+                            <option value="HOU">Houston Texans</option>
+                            <option value="IND">Indianapolis Colts</option>
+                            <option value="JAX">Jacksonville Jaguars</option>
+                            <option value="KC">Kansas City Chiefs</option>
+                            <option value="LAC">Los Angeles Chargers</option>
+                            <option value="LAR">Los Angeles Rams</option>
+                            <option value="MIA">Miami Dolphins</option>
+                            <option value="MIN">Minnesota Vikings</option>
+                            <option value="NE">New England Patriots</option>
+                            <option value="NO">New Orleans Saints</option>
+                            <option value="NYG">New York Giants</option>
+                            <option value="NYJ">New York Jets</option>
+                            <option value="OAK">Oakland Raiders</option>
+                            <option value="PHI">Philadelphia Eagles</option>
+                            <option value="PIT">Pittsburgh Steelers</option>
+                            <option value="SEA">San Francisco 49ers</option>
+                            <option value="SF">Seattle Seahawks</option>
+                            <option value="TB">Tampa Bay Buccaneers</option>
+                            <option value="TEN">Tennessee Titans</option>
+                            <option value="WAS">Washington Redskins</option>
                         </select>
-                        </div>
                         <div class="form-group">
-                        <label for="exampleFormControlInput1">3rd Down %</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Third Down %">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                            <label for="exampleFormControlInput1">Pass Yards Allowed</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="pass_yards_allowed" placeholder="Pass Yards Allowed...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Rush Yards Allowed</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="rush_yards_allowed" placeholder="Rush Yards Allowed...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Total Yards Allowed</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="total_yards_allowed" placeholder="Total Yards Allowed...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Time of Possession</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="TOP" placeholder="Time of Possession...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">First Downs Allowed</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="first_downs_allowed" placeholder="First Downs Allowed...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Penalty Yards</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="penalty_yards" placeholder="Penalty Yards...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Sacks</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Sacks...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Turnovers</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="turnovers" placeholder="Turnovers...">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleFormControlInput1">Third Downs Allowed</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="third_per_allowed" placeholder="Third Downs Allowed...">
+                            </div>
                     </div>
-                    <div class="container">
-                    <h1>{{ sacked }}</h1>
-                    </div>
+                </div>
+            </div>
+        </div>              
+        <button type="submit" class="col-md-3 mx-auto btn btn-primary">Submit</button>  
+    </form>
+    </div>
+    <div class="container">
+    <h1>{{ sacked }}</h1>
+    </div>
 
         </div>
 
     </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <!-- Grid column -->
-    <div class="col-md-6 mb-4">
-        <div class="card card-cascade narrower">
-            <div class="container-fluid">
-                    <form method="POST" action="/result">
-                        <div class="form-group">
-                        <br>
-                        <label for="exampleFormControlSelect1">Team</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="team">
-                            <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlSelect1">Oppenent</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="opponent">
-                            <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">3rd Down %</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Third Down %">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    </div>
-                    <div class="container">
-                    <h1>{{ sacked }}</h1>
-                    </div>
-
-            </div>
-    
-        </div>
-
-</div>
 
                 <!--Grid column-->
                 <div class="col-md-3 mb-4"> 
