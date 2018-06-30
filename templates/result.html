@@ -19,9 +19,9 @@
 
     <main>
       <div class="container">
-        <h1>{{ data.team }}</h1>
-        <h1>{{ data.opponent }}</h1>
-        <h1>{{ data.sacked }}</h1>
+        {% for feature in data %}
+        <h1>{{ feature }}</h1>
+        {% endfor %}
       </div>
     </main>
 

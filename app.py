@@ -44,7 +44,7 @@ def send():
         penalty_yards = request.form["penalty-yards"]
         plays = request.form["plays"]
         rush_yards = request.form["rush-yards"]
-        rush_yards_allowed = request.form["rush_yards_allowed"]
+        rush_yards_allowed = request.form["rush-yards-allowed"]
         sacked = request.form["sacked"]
         sacks = request.form["sacks"]
         takeaways = request.form["takeaways"]
@@ -52,15 +52,43 @@ def send():
         total_yards_allowed = request.form["total-yards-allowed"]
         turnovers = request.form["turnovers"]
 
-        features = [team, opponent, third, third_allowed, top, first_downs,
-                    first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards, plays,
-                    rush_yards, rush_yards_allowed, sacked, sacks, takeaways, total_yards,
-                    total_yards_allowed, turnovers]
+        # form_names = ["team", "opponent", "third", "third-allowed", "top", "first-downs",
+        #               "first-downs-allowed", "ha", "pass-yards", "pass-yards-allowed", "penalty-yards",
+        #               "plays", "rush-yards", "rush-yards-allowed", "sacked", "sacks", "takeaways",
+        #               "total-yards", "total-yards-allowed", "turnovers"]
 
-        for feature in features:
-            data[f"{feature}"] = feature
+        form_names = []
+
+        for item in form_data:
+            form_names.append(item["form_name"])
+
+        feature_values = [team, opponent, third, third_allowed, top, first_downs,
+                          first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards,
+                          plays, rush_yards, rush_yards_allowed, sacked, sacks, takeaways,
+                          total_yards, total_yards_allowed, turnovers]
+
+        # print(feature_values)
+
+        model_input_dict = {}
+
+        for i in range(len(form_names)):
+            model_input_dict[form_names[i]] = feature_values[i]
+
+        print(model_input_dict)
 
         default_df = pd.DataFrame(default_features)
+
+        columns = list(default_df.columns)
+
+        # Add only keys to data dictionary
+        # for column in columns:
+        #     data.add(column)
+
+        # Now add values to each key
+        # for key in data.keys():
+
+        for value in feature_values:
+            data[f"{value}"] = value
 
         return render_template("result.html", data=data)
 
