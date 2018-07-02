@@ -23,9 +23,9 @@ def run_model(model_input_df, team, opponent):
     elif encoded_prediction[0] == 2:
         for key, value in teams_abbrev.items():
             if key == team:
-                data["winner"] = team
-            elif key == team:
-                data["loser"] = opponent
+                data["winner"] = value
+            elif key == opponent:
+                data["loser"] = value
 
     return data
 
