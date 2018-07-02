@@ -27,7 +27,7 @@ def get_default_df():
     return default_df
 
 
-form_names = ["team", "opponent", "third", "third_allowed", "top", "first_downs",
+form_names = ["team", "opp", "third_per", "third_per_allowed", "TOP", "first_downs",
               "first_downs_allowed", "ha", "pass_yards", "pass_yards_allowed", "penalty_yards",
               "plays", "rush_yards", "rush_yards_allowed", "sacked", "sacks", "takeaways",
               "total_yards", "total_yards_allowed", "turnovers"]

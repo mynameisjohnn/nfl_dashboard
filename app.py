@@ -48,24 +48,24 @@ def send():
 
         team = request.form["team"]
         opponent = request.form["opp"]
-        third = request.form["third_per"]
-        third_allowed = request.form["third_per_allowed"]
-        top = request.form["TOP"]
-        first_downs = request.form["first_downs"]
-        first_downs_allowed = request.form["first_downs_allowed"]
+        third = float(request.form["third_per"])
+        third_allowed = float(request.form["third_per_allowed"])
+        top = float(request.form["TOP"])
+        first_downs = float(request.form["first_downs"])
+        first_downs_allowed = float(request.form["first_downs_allowed"])
         ha = request.form["ha"]
-        pass_yards = request.form["pass_yards"]
-        pass_yards_allowed = request.form["pass_yards_allowed"]
-        penalty_yards = request.form["penalty_yards"]
-        plays = request.form["plays"]
-        rush_yards = request.form["rush_yards"]
-        rush_yards_allowed = request.form["rush_yards_allowed"]
-        sacked = request.form["sacked"]
-        sacks = request.form["sacks"]
-        takeaways = request.form["takeaways"]
-        total_yards = request.form["total_yards"]
-        total_yards_allowed = request.form["total_yards_allowed"]
-        turnovers = request.form["turnovers"]
+        pass_yards = float(request.form["pass_yards"])
+        pass_yards_allowed = float(request.form["pass_yards_allowed"])
+        penalty_yards = float(request.form["penalty_yards"])
+        plays = float(request.form["plays"])
+        rush_yards = float(request.form["rush_yards"])
+        rush_yards_allowed = float(request.form["rush_yards_allowed"])
+        sacked = float(request.form["sacked"])
+        sacks = float(request.form["sacks"])
+        takeaways = float(request.form["takeaways"])
+        total_yards = float(request.form["total_yards"])
+        total_yards_allowed = float(request.form["total_yards_allowed"])
+        turnovers = float(request.form["turnovers"])
 
         feature_values = [team, opponent, third, third_allowed, top, first_downs,
                           first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards,
