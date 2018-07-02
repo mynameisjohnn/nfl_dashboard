@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="icon" href="../static/img/nfllogo.jpg"/>
-    <title>Material Design Bootstrap</title>
+    <title>NFL Prediction Dashboard </title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -55,7 +55,7 @@
                     <div class="card-body d-sm-flex justify-content-between">
     
                         <h4 class="mb-2 mb-sm-0 pt-1">
-                            <a href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Home Page</a>
+                            <a href="/" target="_blank">Home Page</a>
                             <span>/</span>
                             <span>Prediction Model</span>
                         </h4>
@@ -67,227 +67,160 @@
     <div class="row">
 
     <!-- Grid column -->
-    <div class="col-md-6 mb-4">
-
-        <div class="card card-cascade narrower">
-            <div class="container-fluid">
-                    <form method="POST" action="/result">
-                        <div class="form-group">
-                            <br>
-                        <label for="exampleFormControlSelect1">Team</label>
+    <form method="POST" action="/result"></form>
+        <div class="col-md-6 col-md-6 mb-4">
+            <div class="card card-cascade narrower">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <br>
+                        <label for="exampleFormControlSelect1">Home Team</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="team">
                             <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
+                            <option value="ARI">Arizona Cardinals</option>
+                            <option value="ATL">Atlanta Falcons</option>
+                            <option value="BAL">Baltimore Ravens</option>
+                            <option value="BUF">Buffalo Bills</option>
+                            <option value="CAR">Carolina Panthers</option>
+                            <option value="CHI">Chicago Bears</option>
+                            <option value="CIN">Cincinnati Bengals</option>
+                            <option value="CLE">Cleveland Browns</option>
+                            <option value="DAL">Dallas Cowboys</option>
+                            <option value="DEN">Denver Broncos</option>
+                            <option value="DET">Detroit Lions</option>
+                            <option value="GB">Green Bay Packers</option>
+                            <option value="HOU">Houston Texans</option>
+                            <option value="IND">Indianapolis Colts</option>
+                            <option value="JAX">Jacksonville Jaguars</option>
+                            <option value="KC">Kansas City Chiefs</option>
+                            <option value="LAC">Los Angeles Chargers</option>
+                            <option value="LAR">Los Angeles Rams</option>
+                            <option value="MIA">Miami Dolphins</option>
+                            <option value="MIN">Minnesota Vikings</option>
+                            <option value="NE">New England Patriots</option>
+                            <option value="NO">New Orleans Saints</option>
+                            <option value="NYG">New York Giants</option>
+                            <option value="NYJ">New York Jets</option>
+                            <option value="OAK">Oakland Raiders</option>
+                            <option value="PHI">Philadelphia Eagles</option>
+                            <option value="PIT">Pittsburgh Steelers</option>
+                            <option value="SEA">San Francisco 49ers</option>
+                            <option value="SF">Seattle Seahawks</option>
+                            <option value="TB">Tampa Bay Buccaneers</option>
+                            <option value="TEN">Tennessee Titans</option>
+                            <option value="WAS">Washington Redskins</option>
                         </select>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlSelect1">Oppenent</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="opponent">
+                        <label for="exampleFormControlSelect1">Away Team</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="team">
                             <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
+                            <option value="ARI">Arizona Cardinals</option>
+                            <option value="ATL">Atlanta Falcons</option>
+                            <option value="BAL">Baltimore Ravens</option>
+                            <option value="BUF">Buffalo Bills</option>
+                            <option value="CAR">Carolina Panthers</option>
+                            <option value="CHI">Chicago Bears</option>
+                            <option value="CIN">Cincinnati Bengals</option>
+                            <option value="CLE">Cleveland Browns</option>
+                            <option value="DAL">Dallas Cowboys</option>
+                            <option value="DEN">Denver Broncos</option>
+                            <option value="DET">Detroit Lions</option>
+                            <option value="GB">Green Bay Packers</option>
+                            <option value="HOU">Houston Texans</option>
+                            <option value="IND">Indianapolis Colts</option>
+                            <option value="JAX">Jacksonville Jaguars</option>
+                            <option value="KC">Kansas City Chiefs</option>
+                            <option value="LAC">Los Angeles Chargers</option>
+                            <option value="LAR">Los Angeles Rams</option>
+                            <option value="MIA">Miami Dolphins</option>
+                            <option value="MIN">Minnesota Vikings</option>
+                            <option value="NE">New England Patriots</option>
+                            <option value="NO">New Orleans Saints</option>
+                            <option value="NYG">New York Giants</option>
+                            <option value="NYJ">New York Jets</option>
+                            <option value="OAK">Oakland Raiders</option>
+                            <option value="PHI">Philadelphia Eagles</option>
+                            <option value="PIT">Pittsburgh Steelers</option>
+                            <option value="SEA">San Francisco 49ers</option>
+                            <option value="SF">Seattle Seahawks</option>
+                            <option value="TB">Tampa Bay Buccaneers</option>
+                            <option value="TEN">Tennessee Titans</option>
+                            <option value="WAS">Washington Redskins</option>
                         </select>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Pass Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="pass_yards" placeholder="Pass Yards...">
+                        </div>
+                        <label for="exampleFormControlInput1">Pass Yards Allowed</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="pass_yards_allowed" placeholder="Pass Yards Allowed...">
                         </div>
                         <div class="form-group">
-                        <label for="exampleFormControlInput1">3rd Down %</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Third Down %">
+                        <label for="exampleFormControlInput1">Rush Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="rush_yards" placeholder="Rush Yards...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Rush Yards Allowed</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="rush_yards_allowed" placeholder="Rush Yards Allowed...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Total Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="total_yards" placeholder="Total Yards...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Total Yards Allowed</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="total_yards_allowed" placeholder="Total Yards Allowed...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Time of Possession</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="TOP" placeholder="Time of Possession...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">First Downs</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="first_downs" placeholder="First Downs...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">First Downs Allowed</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="first_downs_allowed" placeholder="First Downs Allowed...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Penalty Yards</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="penalty_yards" placeholder="Penalty Yards...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Sacks</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Sacks...">
                         </div>
                         <div class="form-group">
                         <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="Sacked...">
                         </div>
                         <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
+                        <label for="exampleFormControlInput1">Turnovers</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="turnovers" placeholder="Turnovers...">
                         </div>
                         <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
+                        <label for="exampleFormControlInput1">Take Aways</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="takeaways" placeholder="Take Aways...">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    </div>
-                    <div class="container">
-                    <h1>{{ sacked }}</h1>
-                    </div>
-
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Third Downs</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="third_per" placeholder="Third Downs...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Third Downs Allowed</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="third_per_allowed" placeholder="Third Downs Allowed...">
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlInput1">Plays</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="plays" placeholder="Plays...">
+                        </div>
+                    </div>                     
+                </div>
+            </div>
         </div>
+        <button type="submit" class="col-md-3 mx-auto btn btn-primary">Submit</button>  
+    </form>
+    </div>
 
     </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <!-- Grid column -->
-    <div class="col-md-6 mb-4">
-        <div class="card card-cascade narrower">
-            <div class="container-fluid">
-                    <form method="POST" action="/result">
-                        <div class="form-group">
-                        <br>
-                        <label for="exampleFormControlSelect1">Team</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="team">
-                            <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlSelect1">Oppenent</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="opponent">
-                            <option selected>Choose...</option>
-                            <option value="1">Arizona Cardinals</option>
-                            <option value="2">Atlanta Falcons</option>
-                            <option value="3">Baltimore Ravens</option>
-                            <option value="4">Buffalo Bills</option>
-                            <option value="5">Carolina Panthers</option>
-                            <option value="6">Chicago Bears</option>
-                            <option value="7">Cincinnati Bengals</option>
-                            <option value="8">Cleveland Browns</option>
-                            <option value="9">Dallas Cowboys</option>
-                            <option value="10">Denver Broncos</option>
-                            <option value="11">Detroit Lions</option>
-                            <option value="12">Green Bay Packers</option>
-                            <option value="13">Houston Texans</option>
-                            <option value="14">Indianapolis Colts</option>
-                            <option value="15">Jacksonville Jaguars</option>
-                            <option value="16">Kansas City Chiefs</option>
-                            <option value="17">Los Angeles Chargers</option>
-                            <option value="18">Los Angeles Rams</option>
-                            <option value="19">Miami Dolphins</option>
-                            <option value="20">Minnesota Vikings</option>
-                            <option value="21">New England Patriots</option>
-                            <option value="22">New Orleans Saints</option>
-                            <option value="23">New York Giants</option>
-                            <option value="24">New York Jets</option>
-                            <option value="25">Oakland Raiders</option>
-                            <option value="26">Philadelphia Eagles</option>
-                            <option value="27">Pittsburgh Steelers</option>
-                            <option value="28">San Francisco 49ers</option>
-                            <option value="29">Seattle Seahawks</option>
-                            <option value="30">Tampa Bay Buccaneers</option>
-                            <option value="31">Tennessee Titans</option>
-                            <option value="32">Washington Redskins</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">3rd Down %</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacks" placeholder="Third Down %">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleFormControlInput1">Sacked</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="sacked" placeholder="How many times team got sacked...">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    </div>
-                    <div class="container">
-                    <h1>{{ sacked }}</h1>
-                    </div>
-
-            </div>
-    
-        </div>
-
-</div>
 
                 <!--Grid column-->
                 <div class="col-md-3 mb-4"> 
@@ -337,6 +270,7 @@
                                 <div class="modal-content">
                                     <!--Body-->
                                     <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <div class="text-center">
                                             <i class="fa fa-twitter fa-4x mb-3 animated rotateIn "style="color:	#00FFFF"></i>
                                             <p>Latest Twitter Feed</p>
@@ -382,183 +316,6 @@
     <script type="text/javascript">
         // Animations initialization
         new WOW().init();
-    </script>
-
-    <!-- Charts -->
-    <script>
-
-        // Line
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-        //pie
-        var ctxP = document.getElementById("pieChart").getContext('2d');
-        var myPieChart = new Chart(ctxP, {
-            type: 'pie',
-            data: {
-                datasets: [
-                    {
-                        data: [300, 50, 100, 40, 120],
-                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-
-        //line
-        var ctxL = document.getElementById("lineChart").getContext('2d');
-        var myLineChart = new Chart(ctxL, {
-            type: 'line',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [
-                    {
-                        label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: "My Second dataset",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-
-        //radar
-        var ctxR = document.getElementById("radarChart").getContext('2d');
-        var myRadarChart = new Chart(ctxR, {
-            type: 'radar',
-            data: {
-                labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-                datasets: [
-                    {
-                        label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [65, 59, 90, 81, 56, 55, 40]
-                    },
-                    {
-                        label: "My Second dataset",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
-                        data: [28, 48, 40, 19, 96, 27, 100]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-        //doughnut
-        var ctxD = document.getElementById("doughnutChart").getContext('2d');
-        var myLineChart = new Chart(ctxD, {
-            type: 'doughnut',
-            data: {
-                labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-                datasets: [
-                    {
-                        data: [300, 50, 100, 40, 120],
-                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-    </script>
-
-    <!--Google Maps-->
-    <script src="https://maps.google.com/maps/api/js"></script>
-    <script>
-        // Regular map
-        function regular_map() {
-            var var_location = new google.maps.LatLng(40.725118, -73.997699);
-
-            var var_mapoptions = {
-                center: var_location,
-                zoom: 14
-            };
-
-            var var_map = new google.maps.Map(document.getElementById("map-container"),
-                var_mapoptions);
-
-            var var_marker = new google.maps.Marker({
-                position: var_location,
-                map: var_map,
-                title: "New York"
-            });
-        }
-
-        // Initialize maps
-        google.maps.event.addDomListener(window, 'load', regular_map);
     </script>
 
 </body>
