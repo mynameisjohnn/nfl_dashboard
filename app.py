@@ -1,10 +1,33 @@
 from flask import Flask, request, render_template, jsonify
 import pandas as pd
 from keras.models import load_model
-from build_dataframe import get_default_df, get_form_data
+from build_dataframe import get_default_df, form_names, teams_abbrev
 
 
 app = Flask(__name__)
+
+
+def run_model(model_input_df, team, opponent):
+    deep_model = load_model("models/deep_neural_model_trained.h5")
+
+    encoded_prediction = deep_model.predict_classes(model_input_df)
+
+    data = {}
+
+    if encoded_prediction[0] == 0:
+        for key, value in teams_abbrev.items():
+            if key == opponent:
+                data["winner"] = value
+            elif key == team:
+                data["loser"] = value
+    elif encoded_prediction[0] == 2:
+        for key, value in teams_abbrev.items():
+            if key == team:
+                data["winner"] = team
+            elif key == team:
+                data["loser"] = opponent
+
+    return data
 
 
 @app.route("/")
@@ -15,30 +38,13 @@ def home():
 
 @app.route("/predictions")
 def predict():
-    pass
 
-
-@app.route("/test-survey")
-def test_survey():
-    form = {}
-
-    teams = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GBP",
-             "HOU", "IND", "JAX", "KCC", "LAC", "LAR", "MIA", "MIN", "NEP", "NOS", "NYG", "NYJ",
-             "OAK", "PHI", "PIT", "SEA", "SFO", "TBB", "TEN", "WAS"]
-
-    form["teams"] = teams
-
-    form_data, form_names = get_form_data()
-
-    form["form_data"] = form_data
-
-    return render_template("survey.html", form=form)
+    return render_template("prediction_model.html")
 
 
 @app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "POST":
-        # data = {}
 
         team = request.form["team"]
         opponent = request.form["opp"]
@@ -70,18 +76,14 @@ def send():
 
         model_input_df = default_df.copy()
 
-        form_data, form_names = get_form_data()
-
         model_input_dict = dict(zip(form_names, feature_values))
 
         columns = list(default_df.columns)
 
         for column in columns:
             for key, value in model_input_dict.items():
-
                 if key == column:
                     model_input_df[column] = value
-
                 elif f"{key}_{value}" == column:
                     model_input_df[column] = 1
 
@@ -92,10 +94,7 @@ def send():
         elif ha_value == "Away":
             model_input_df["ha"] = 1
 
-        data = model_input_df.to_dict(orient="records")
-
-        # for value in feature_values:
-        #     data[f"{value}"] = value
+        data = run_model(model_input_df, team, opponent)
 
         return render_template("result.html", data=data)
 
