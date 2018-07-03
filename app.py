@@ -99,6 +99,22 @@ def send():
         return render_template("result.html", data=data)
 
 
+@app.route("/test-fill")
+def test_fill():
+
+    return render_template("test_fill.html")
+
+
+@app.route("/teams-data")
+def teams_data():
+
+    df = pd.read_csv("data/teams.csv")
+
+    data = df.to_dict(orient="records")
+
+    return jsonify(data)
+
+
 @app.route("/data")
 def data():
     pass

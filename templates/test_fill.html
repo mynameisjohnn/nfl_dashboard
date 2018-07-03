@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>DATA</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="teamtable">
+      <div class="row">
+        <div class="col-md-6" id="home">
+          <h1>Home Team</h1>
+          <form>
+            <h2>Team Name:</h2>
+            <select id="h_team" class="select_team" name="team">
+              <option value="default">Select Team</option>
+              <option value="ARI">ARI</option>
+              <option value="ATL">ATL</option>
+              <option value="BAL">BAL</option>
+              <option value="BUF">BUF</option>
+              <option value="CAR">CAR</option>
+              <option value="CHI">CHI</option>
+              <option value="CIN">CIN</option>
+              <option value="CLE">CLE</option>
+              <option value="DAL">DAL</option>
+              <option value="DEN">DEN</option>
+              <option value="DET">DET</option>
+              <option value="GBP">GBP</option>
+              <option value="HOU">HOU</option>
+              <option value="IND">IND</option>
+              <option value="JAX">JAX</option>
+              <option value="KCC">KCC</option>
+              <option value="LAC">LAC</option>
+              <option value="LAR">LAR</option>
+              <option value="MIA">MIA</option>
+              <option value="MIN">MIN</option>
+              <option value="NEP">NEP</option>
+              <option value="NOS">NOS</option>
+              <option value="NYG">NYG</option>
+              <option value="NYJ">NYJ</option>
+              <option value="OAK">OAK</option>
+              <option value="PHI">PHI</option>
+              <option value="PIT">PIT</option>
+              <option value="SEA">SEA</option>
+              <option value="SFO">SFO</option>
+              <option value="TBB">TBB</option>
+              <option value="TEN">TEN</option>
+              <option value="WAS">WAS</option>
+            </select>
+            <br>
+            <h3>Time of Possession</h3>
+            <input type="text" id="h_top" name="top" placeholder="Time of Possession">
+            <br>
+            <h3>Plays</h3>
+            <input type="text" id="h_plays" name="plays" placeholder="Plays">
+            <br>
+            <h3>Rush Yards</h3>
+            <input type="text" id="h_rush" name="rush_yards" placeholder="Rush Yards">
+            <br>
+            <h3>Pass Yards</h3>
+            <input type="text" id="h_pass" name="pass_yards" placeholder="Pass Yards">
+            <br>
+            <h3>Total Yards</h3>
+            <input type="text" id="h_total" name="total_yards" placeholder="Total Yards">
+            <br>
+            <h3>Penalty Yards</h3>
+            <input type="text" id="h_penalty" name="penalty_yards" placeholder="Penalty Yards">
+            <br>
+            <h3>First Downs</h3>
+            <input type="text" id="h_first" name="first_downs" placeholder="First Downs">
+            <br>
+            <h3>Third Down Percentage</h3>
+            <input type="text" id="h_tdp" name="TDP" placeholder="Third Down %">
+            <br>
+            <h3>Sacks</h3>
+            <input type="text" id="h_sacks" name="sacks" placeholder="Sacks">
+            <br>
+            <h3>Turnovers</h3>
+            <input type="text" id="h_tos" name="turnovers" placeholder="Turnovers">
+            <br>
+        </div>
+
+        <div class="col-md-6" id="awayteam">
+          <h1>Away Team</h1>
+          <h2>Team Name</h2>
+          <select id="a_team" class="select_team" name="opp">
+            <option value="default">Select Team</option>
+            <option value="ARI">ARI</option>
+            <option value="ATL">ATL</option>
+            <option value="BAL">BAL</option>
+            <option value="BUF">BUF</option>
+            <option value="CAR">CAR</option>
+            <option value="CHI">CHI</option>
+            <option value="CIN">CIN</option>
+            <option value="CLE">CLE</option>
+            <option value="DAL">DAL</option>
+            <option value="DEN">DEN</option>
+            <option value="DET">DET</option>
+            <option value="GBP">GBP</option>
+            <option value="HOU">HOU</option>
+            <option value="IND">IND</option>
+            <option value="JAX">JAX</option>
+            <option value="KCC">KCC</option>
+            <option value="LAC">LAC</option>
+            <option value="LAR">LAR</option>
+            <option value="MIA">MIA</option>
+            <option value="MIN">MIN</option>
+            <option value="NEP">NEP</option>
+            <option value="NOS">NOS</option>
+            <option value="NYG">NYG</option>
+            <option value="NYJ">NYJ</option>
+            <option value="OAK">OAK</option>
+            <option value="PHI">PHI</option>
+            <option value="PIT">PIT</option>
+            <option value="SEA">SEA</option>
+            <option value="SFO">SFO</option>
+            <option value="TBB">TBB</option>
+            <option value="TEN">TEN</option>
+            <option value="WAS">WAS</option>
+          </select>
+          <br>
+          <h3>Time of Possession</h3>
+          <input type="text" id="a_top" name="top_allowed" placeholder="Time of Possession">
+          <br>
+          <h3>Plays</h3>
+          <input type="text" id="a_plays" name="plays_allowed" placeholder="Plays">
+          <br>
+          <h3>Rush Yards</h3>
+          <input type="text" id="a_rush" name="rush_yards_allowed" placeholder="Rush Yards">
+          <br>
+          <h3>Pass Yards</h3>
+          <input type="text" id="a_pass" name="pass_yards_allowed" placeholder="Pass Yards">
+          <br>
+          <h3>Total Yards</h3>
+          <input type="text" id="a_total" name="total_yards_allowed" placeholder="Total Yards">
+          <br>
+          <h3>Penalty Yards</h3>
+          <input type="text" id="a_penalty" name="penalty_yards_allowed" placeholder="Penalty Yards">
+          <br>
+          <h3>First Downs</h3>
+          <input type="text" id="a_first" name="first_downs_allowed" placeholder="First Downs">
+          <br>
+          <h3>Third Down Percentage</h3>
+          <input type="text" id="a_tdp" name="TDP_allowed" placeholder="Third Down %">
+          <br>
+          <h3>Sacks</h3>
+          <input type="text" id="a_sacks" name="sacked" placeholder="Sacks">
+          <br>
+          <h3>Turnovers</h3>
+          <input type="text" id="a_tos" name="takeaways" placeholder="Turnovers">
+          <br>
+          <br>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/autofill.js"></script>
+  </body>
+
+</html>
