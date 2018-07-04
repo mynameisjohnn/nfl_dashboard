@@ -63,6 +63,22 @@
                     </div>
 
                 </div>
+                <!--Card-->
+                <div class="card mb-4">
+
+                    <!-- Card header -->
+                    <div class="card-header text-center" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+                        Prediction Model Explanation
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">                        
+                        <li>Pick two teams you want to see head-to-head. All stat fields will automatically pre-fill with 2017 averages after selecting the teams. Modify the pre-filled statistics to your liking. Click the Submit button and let's beat Vegas!</li>
+                        <li>Choose the type of Prediction Model you would like to run: The Winner of a Game or the Project Points for a Game.</li>
+                    </div>
+
+                </div>
+                <!--/.Card-->
                 <!-- Heading -->
                 <div class="container">
                     <form method="POST" action="/result">
@@ -152,95 +168,101 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- Grid column -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="container-fluid">
-                                    <div class="form-group">
-                                        <br>
-                                        <label for="exampleFormControlSelect1">Away Team</label>                                       
-                                        <select class="form-control select_team" id="a_team" name="opp">
-                                            <option selected>Choose...</option>
-                                            <option value="ARI">Arizona Cardinals</option>
-                                            <option value="ATL">Atlanta Falcons</option>
-                                            <option value="BAL">Baltimore Ravens</option>
-                                            <option value="BUF">Buffalo Bills</option>
-                                            <option value="CAR">Carolina Panthers</option>
-                                            <option value="CHI">Chicago Bears</option>
-                                            <option value="CIN">Cincinnati Bengals</option>
-                                            <option value="CLE">Cleveland Browns</option>
-                                            <option value="DAL">Dallas Cowboys</option>
-                                            <option value="DEN">Denver Broncos</option>
-                                            <option value="DET">Detroit Lions</option>
-                                            <option value="GB">Green Bay Packers</option>
-                                            <option value="HOU">Houston Texans</option>
-                                            <option value="IND">Indianapolis Colts</option>
-                                            <option value="JAX">Jacksonville Jaguars</option>
-                                            <option value="KC">Kansas City Chiefs</option>
-                                            <option value="LAC">Los Angeles Chargers</option>
-                                            <option value="LAR">Los Angeles Rams</option>
-                                            <option value="MIA">Miami Dolphins</option>
-                                            <option value="MIN">Minnesota Vikings</option>
-                                            <option value="NE">New England Patriots</option>
-                                            <option value="NO">New Orleans Saints</option>
-                                            <option value="NYG">New York Giants</option>
-                                            <option value="NYJ">New York Jets</option>
-                                            <option value="OAK">Oakland Raiders</option>
-                                            <option value="PHI">Philadelphia Eagles</option>
-                                            <option value="PIT">Pittsburgh Steelers</option>
-                                            <option value="SEA">San Francisco 49ers</option>
-                                            <option value="SF">Seattle Seahawks</option>
-                                            <option value="TB">Tampa Bay Buccaneers</option>
-                                            <option value="TEN">Tennessee Titans</option>
-                                            <option value="WAS">Washington Redskins</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Pass Yards Allowed</label>
-                                        <input type="text" class="form-control" id="a_pass" name="pass_yards_allowed" placeholder="Pass Yards Allowed...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Rush Yards Allowed</label>
-                                        <input type="text" class="form-control" id="a_rush" name="rush_yards_allowed" placeholder="Rush Yards Allowed...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Total Yards Allowed</label>
-                                        <input type="text" class="form-control" id="a_total" name="total_yards_allowed" placeholder="Total Yards Allowed...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Away Team Time of Possession</label>
-                                        <input type="text" class="form-control" id="a_top" placeholder="Away Team Time of Possession...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">First Downs Allowed</label>
-                                        <input type="text" class="form-control" id="a_first" name="first_downs_allowed" placeholder="First Downs Allowed...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Away Penalty Yards</label>
-                                        <input type="text" class="form-control" id="a_penalty" name="penalty_yards" placeholder="Away Penalty Yards...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Sacked</label>
-                                        <input type="text" class="form-control" id="a_sacks" name="sacked" placeholder="Sacked...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Take Aways</label>
-                                        <input type="text" class="form-control" id="a_tos" name="takeaways" placeholder="Take Aways...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Third Downs Allowed</label>
-                                        <input type="text" class="form-control" id="a_tdp" name="third_per_allowed" placeholder="Third Downs Allowed Percentage...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Away Plays</label>
-                                        <input type="text" class="form-control" id="a_plays" name="plays" placeholder="Away Plays...">
+                            <!-- Grid column -->
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="container-fluid">
+                                        <div class="form-group">
+                                            <br>
+                                            <label for="exampleFormControlSelect1">Away Team</label>
+                                            <select class="form-control select_team" id="a_team" name="opp">
+                                                <option selected>Choose...</option>
+                                                <option value="ARI">Arizona Cardinals</option>
+                                                <option value="ATL">Atlanta Falcons</option>
+                                                <option value="BAL">Baltimore Ravens</option>
+                                                <option value="BUF">Buffalo Bills</option>
+                                                <option value="CAR">Carolina Panthers</option>
+                                                <option value="CHI">Chicago Bears</option>
+                                                <option value="CIN">Cincinnati Bengals</option>
+                                                <option value="CLE">Cleveland Browns</option>
+                                                <option value="DAL">Dallas Cowboys</option>
+                                                <option value="DEN">Denver Broncos</option>
+                                                <option value="DET">Detroit Lions</option>
+                                                <option value="GB">Green Bay Packers</option>
+                                                <option value="HOU">Houston Texans</option>
+                                                <option value="IND">Indianapolis Colts</option>
+                                                <option value="JAX">Jacksonville Jaguars</option>
+                                                <option value="KC">Kansas City Chiefs</option>
+                                                <option value="LAC">Los Angeles Chargers</option>
+                                                <option value="LAR">Los Angeles Rams</option>
+                                                <option value="MIA">Miami Dolphins</option>
+                                                <option value="MIN">Minnesota Vikings</option>
+                                                <option value="NE">New England Patriots</option>
+                                                <option value="NO">New Orleans Saints</option>
+                                                <option value="NYG">New York Giants</option>
+                                                <option value="NYJ">New York Jets</option>
+                                                <option value="OAK">Oakland Raiders</option>
+                                                <option value="PHI">Philadelphia Eagles</option>
+                                                <option value="PIT">Pittsburgh Steelers</option>
+                                                <option value="SEA">San Francisco 49ers</option>
+                                                <option value="SF">Seattle Seahawks</option>
+                                                <option value="TB">Tampa Bay Buccaneers</option>
+                                                <option value="TEN">Tennessee Titans</option>
+                                                <option value="WAS">Washington Redskins</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Pass Yards Allowed</label>
+                                            <input type="text" class="form-control" id="a_pass" name="pass_yards_allowed" placeholder="Pass Yards Allowed...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Rush Yards Allowed</label>
+                                            <input type="text" class="form-control" id="a_rush" name="rush_yards_allowed" placeholder="Rush Yards Allowed...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Total Yards Allowed</label>
+                                            <input type="text" class="form-control" id="a_total" name="total_yards_allowed" placeholder="Total Yards Allowed...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Away Team Time of Possession</label>
+                                            <input type="text" class="form-control" id="a_top" placeholder="Away Team Time of Possession...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">First Downs Allowed</label>
+                                            <input type="text" class="form-control" id="a_first" name="first_downs_allowed" placeholder="First Downs Allowed...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Away Penalty Yards</label>
+                                            <input type="text" class="form-control" id="a_penalty" name="penalty_yards" placeholder="Away Penalty Yards...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Sacked</label>
+                                            <input type="text" class="form-control" id="a_sacks" name="sacked" placeholder="Sacked...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Take Aways</label>
+                                            <input type="text" class="form-control" id="a_tos" name="takeaways" placeholder="Take Aways...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Third Downs Allowed</label>
+                                            <input type="text" class="form-control" id="a_tdp" name="third_per_allowed" placeholder="Third Downs Allowed Percentage...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Away Plays</label>
+                                            <input type="text" class="form-control" id="a_plays" name="plays" placeholder="Away Plays...">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-12 text-center ">
+                                <input type="radio" name="model_name" value="winloss" style="margin-left:30px">Win/Loss Prediction Model 
+                                <input type="radio" name="model_name" value="score" style="margin-left:30px">Projected Points Prediction Model
+                            </div>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-primary mx-auto btn-lg">Submit</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>  
-                </div>
+                    </div>
                 </form>
             </div>
             <!--Grid row-->
