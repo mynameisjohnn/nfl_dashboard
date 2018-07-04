@@ -67,6 +67,12 @@ def send():
         total_yards_allowed = float(request.form["total_yards_allowed"])
         turnovers = float(request.form["turnovers"])
 
+        # If/Else Pick your model
+        
+
+
+
+        # Deep neural network model
         feature_values = [team, opponent, third, third_allowed, top, first_downs,
                           first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards,
                           plays, rush_yards, rush_yards_allowed, sacked, sacks, takeaways,
