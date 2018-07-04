@@ -7,7 +7,7 @@ from build_dataframe import get_default_df, form_names, teams_abbrev
 app = Flask(__name__)
 
 
-def run_model(model_input_df, team, opponent):
+def run_win_loss_model(model_input_df, team, opponent):
     deep_model = load_model("models/deep_neural_model_trained.h5")
 
     encoded_prediction = deep_model.predict_classes(model_input_df)
@@ -68,40 +68,39 @@ def send():
         total_yards = float(request.form["total_yards"])
         total_yards_allowed = float(request.form["total_yards_allowed"])
         turnovers = float(request.form["turnovers"])
-    
+
         chosen_model = request.form["model_name"]
+
         # If/Else Pick your model
-        if chosen_model == "winloss"
-            pass
+        if chosen_model == "winloss":
+            # Deep neural network model
+            feature_values = [team, opponent, third, third_allowed, top, first_downs,
+                              first_downs_allowed, pass_yards, pass_yards_allowed, penalty_yards,
+                              plays, rush_yards, rush_yards_allowed, sacked, sacks, takeaways,
+                              total_yards, total_yards_allowed, turnovers]
+
+            default_df = get_default_df()
+
+            model_input_df = default_df.copy()
+
+            model_input_dict = dict(zip(form_names, feature_values))
+
+            columns = list(default_df.columns)
+
+            for column in columns:
+                for key, value in model_input_dict.items():
+                    if key == column:
+                        model_input_df[column] = value
+                    elif f"{key}_{value}" == column:
+                        model_input_df[column] = 1
+
+            data = run_win_loss_model(model_input_df, team, opponent)
+
+            return render_template("results_neural.html", data=data)
+        elif chosen_model == "score":
+            return render_template("results_score.html")
         else:
-            pass
-
-
-
-        # Deep neural network model
-        feature_values = [team, opponent, third, third_allowed, top, first_downs,
-                          first_downs_allowed, pass_yards, pass_yards_allowed, penalty_yards,
-                          plays, rush_yards, rush_yards_allowed, sacked, sacks, takeaways,
-                          total_yards, total_yards_allowed, turnovers]
-
-        default_df = get_default_df()
-
-        model_input_df = default_df.copy()
-
-        model_input_dict = dict(zip(form_names, feature_values))
-
-        columns = list(default_df.columns)
-
-        for column in columns:
-            for key, value in model_input_dict.items():
-                if key == column:
-                    model_input_df[column] = value
-                elif f"{key}_{value}" == column:
-                    model_input_df[column] = 1
-        
-        data = run_model(model_input_df, team, opponent)
-
-        return render_template("result.html", data=data)
+            return render_template("prediction_model.html")
 
 
 @app.route("/test-fill")

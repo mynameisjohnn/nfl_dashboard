@@ -6,7 +6,7 @@ click==6.7
 Flask==1.0.2
 gast==0.2.0
 grpcio==1.13.0
-gunicorn==19.8.1
+gunicorn==19.9.0
 h5py==2.8.0
 html5lib==0.9999999
 itsdangerous==0.24
@@ -20,10 +20,11 @@ numpy==1.14.5
 pandas==0.23.1
 protobuf==3.6.0
 python-dateutil==2.7.3
-pytz==2018.4
+pytz==2018.5
 PyYAML==3.12
 scipy==1.1.0
 six==1.11.0
+statsmodels==0.9.0
 tensorboard==1.8.0
 tensorflow==1.8.0
 termcolor==1.1.0
