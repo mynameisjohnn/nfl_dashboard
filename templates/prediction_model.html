@@ -74,7 +74,7 @@
                                         <div class="form-group">
                                             <br>
                                             <label for="exampleFormControlSelect1">Home Team</label>
-                                            <select class="form-control" id="h_team" name="team">
+                                            <select class="form-control select_team" id="h_team" name="team">
                                                 <option selected>Choose...</option>
                                                 <option value="ARI">Arizona Cardinals</option>
                                                 <option value="ATL">Atlanta Falcons</option>
@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Away Team</label>
-                                            <select class="form-control" id="a_team" name="opp">
+                                            <select class="form-control select_team" id="a_team" name="opp">
                                                 <option selected>Choose...</option>
                                                 <option value="ARI">Arizona Cardinals</option>
                                                 <option value="ATL">Atlanta Falcons</option>
@@ -185,6 +185,10 @@
                                             <input type="text" class="form-control" id="h_top" name="TOP" placeholder="Time of Possession...">
                                         </div>
                                         <div class="form-group">
+                                            <label for="exampleFormControlInput1">Away Team Time of Possession</label>
+                                            <input type="text" class="form-control" id="a_top" placeholder="Away Team Time of Possession...">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="exampleFormControlInput1">First Downs</label>
                                             <input type="text" class="form-control" id="h_first" name="first_downs" placeholder="First Downs...">
                                         </div>
@@ -195,6 +199,10 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Penalty Yards</label>
                                             <input type="text" class="form-control" id="h_penalty" name="penalty_yards" placeholder="Penalty Yards...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Away Penalty Yards</label>
+                                            <input type="text" class="form-control" id="a_penalty" name="penalty_yards" placeholder="Away Penalty Yards...">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Sacks</label>
@@ -223,6 +231,10 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Plays</label>
                                             <input type="text" class="form-control" id="h_plays" name="plays" placeholder="Plays...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Away Plays</label>
+                                            <input type="text" class="form-control" id="a_plays" name="plays" placeholder="Away Plays...">
                                         </div>
                                     </div>
                                 </div>
@@ -328,6 +340,8 @@
                 // Animations initialization
                 new WOW().init();
             </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+            <script src="{{ url_for('static', filename='js/autofill.js') }}"></script>
 
     </body>
 
