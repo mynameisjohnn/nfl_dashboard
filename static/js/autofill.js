@@ -6,7 +6,7 @@ $(document).on('change', '.select_team', function () {
     if (home_team != 'default' && away_team != 'default') {
         d3.json("/teams-data", function (error, teamData) {
             if (error) return console.warn(error);
-            console.log(teamData);
+            // console.log(teamData);
 
             let homeTeamInfo,
                 awayTeamInfo;
@@ -24,7 +24,6 @@ $(document).on('change', '.select_team', function () {
             }
 
             // Calculate Time Of Possessions
-
             let homeTOP = 60 * parseFloat(homeTeamInfo.TOP) / (parseFloat(homeTeamInfo.TOP) + parseFloat(awayTeamInfo.TOP));
             let awayTOP = 60 - homeTOP;
             document.getElementById("h_top").value = homeTOP.toFixed(2);
