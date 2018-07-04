@@ -28,7 +28,7 @@ def get_default_df():
 
 
 form_names = ["team", "opp", "third_per", "third_per_allowed", "TOP", "first_downs",
-              "first_downs_allowed", "ha", "pass_yards", "pass_yards_allowed", "penalty_yards",
+              "first_downs_allowed", "pass_yards", "pass_yards_allowed", "penalty_yards",
               "plays", "rush_yards", "rush_yards_allowed", "sacked", "sacks", "takeaways",
               "total_yards", "total_yards_allowed", "turnovers"]
 
@@ -44,25 +44,25 @@ teams_abbrev = {
     "DAL": "Dallas Cowboys",
     "DEN": "Denver Broncos",
     "DET": "Detroit Lions",
-    "GB": "Green Bay Packers",
+    "GBP": "Green Bay Packers",
     "HOU": "Houston Texans",
     "IND": "Indianapolis Colts",
     "JAX": "Jacksonville Jaguars",
-    "KC": "Kansas City Chiefs",
+    "KCC": "Kansas City Chiefs",
     "LAC": "Los Angeles Chargers",
     "LAR": "Los Angeles Rams",
     "MIA": "Miami Dolphins",
     "MIN": "Minnesota Vikings",
-    "NE": "New England Patriots",
-    "NO": "New Orleans Saints",
+    "NEP": "New England Patriots",
+    "NOS": "New Orleans Saints",
     "NYG": "New York Giants",
     "NYJ": "New York Jets",
     "OAK": "Oakland Raiders",
     "PHI": "Philadelphia Eagles",
     "PIT": "Pittsburgh Steelers",
-    "SEA": "San Francisco 49ers",
-    "SF": "Seattle Seahawks",
-    "TB": "Tampa Bay Buccaneers",
+    "SFO": "San Francisco 49ers",
+    "SEA": "Seattle Seahawks",
+    "TBB": "Tampa Bay Buccaneers",
     "TEN": "Tennessee Titans",
     "WAS": "Washington Redskins"
 }

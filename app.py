@@ -51,13 +51,15 @@ def send():
         third = float(request.form["third_per"])
         third_allowed = float(request.form["third_per_allowed"])
         top = float(request.form["TOP"])
+        a_top = float(request.form["a_TOP"])
         first_downs = float(request.form["first_downs"])
         first_downs_allowed = float(request.form["first_downs_allowed"])
-        ha = request.form["ha"]
         pass_yards = float(request.form["pass_yards"])
         pass_yards_allowed = float(request.form["pass_yards_allowed"])
         penalty_yards = float(request.form["penalty_yards"])
+        a_penalty_yards = float(request.form["a_penalty_yards"])
         plays = float(request.form["plays"])
+        a_plays = float(request.form["a_plays"])
         rush_yards = float(request.form["rush_yards"])
         rush_yards_allowed = float(request.form["rush_yards_allowed"])
         sacked = float(request.form["sacked"])
@@ -74,7 +76,7 @@ def send():
 
         # Deep neural network model
         feature_values = [team, opponent, third, third_allowed, top, first_downs,
-                          first_downs_allowed, ha, pass_yards, pass_yards_allowed, penalty_yards,
+                          first_downs_allowed, pass_yards, pass_yards_allowed, penalty_yards,
                           plays, rush_yards, rush_yards_allowed, sacked, sacks, takeaways,
                           total_yards, total_yards_allowed, turnovers]
 
@@ -92,14 +94,7 @@ def send():
                     model_input_df[column] = value
                 elif f"{key}_{value}" == column:
                     model_input_df[column] = 1
-
-        ha_value = model_input_df["ha"][0]
-
-        if ha_value == "Home":
-            model_input_df["ha"] = 0
-        elif ha_value == "Away":
-            model_input_df["ha"] = 1
-
+        
         data = run_model(model_input_df, team, opponent)
 
         return render_template("result.html", data=data)
