@@ -68,9 +68,13 @@ def send():
         total_yards = float(request.form["total_yards"])
         total_yards_allowed = float(request.form["total_yards_allowed"])
         turnovers = float(request.form["turnovers"])
-
+    
+        chosen_model = request.form["model_name"]
         # If/Else Pick your model
-        
+        if chosen_model == "winloss"
+            pass
+        else:
+            pass
 
 
 
