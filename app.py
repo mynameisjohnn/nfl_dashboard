@@ -1,49 +1,23 @@
 from flask import Flask, request, render_template, jsonify
 import pandas as pd
-from keras.models import load_model
-from build_dataframe import get_default_df, form_names, teams_abbrev
+from run_models import get_default_df, form_names, run_win_loss_model, run_score_model
 
 
 app = Flask(__name__)
 
 
-def run_win_loss_model(model_input_df, team, opponent):
-    deep_model = load_model("models/deep_neural_model_trained.h5")
-
-    encoded_prediction = deep_model.predict_classes(model_input_df)
-
-    data = {}
-
-    if encoded_prediction[0] == 0:
-        for key, value in teams_abbrev.items():
-            if key == opponent:
-                data["winner"] = value
-            elif key == team:
-                data["loser"] = value
-    elif encoded_prediction[0] == 2:
-        for key, value in teams_abbrev.items():
-            if key == team:
-                data["winner"] = value
-            elif key == opponent:
-                data["loser"] = value
-
-    return data
-
-
 @app.route("/")
 def home():
-
     return render_template("index.html")
 
 
 @app.route("/predictions")
 def predict():
-
     return render_template("prediction_model.html")
 
 
-@app.route("/send", methods=["GET", "POST"])
-def send():
+@app.route("/results", methods=["GET", "POST"])
+def results():
     if request.method == "POST":
 
         team = request.form["team"]
@@ -71,7 +45,6 @@ def send():
 
         chosen_model = request.form["model_name"]
 
-        # If/Else Pick your model
         if chosen_model == "winloss":
             # Deep neural network model
             feature_values = [team, opponent, third, third_allowed, top, first_downs,
@@ -97,16 +70,32 @@ def send():
             data = run_win_loss_model(model_input_df, team, opponent)
 
             return render_template("results_neural.html", data=data)
+
         elif chosen_model == "score":
-            return render_template("results_score.html")
+            # Score model
+            home_dictionary = {"ha": "home", "team": team, "opp": opponent, "third_per": third, "third_per_allowed": third_allowed,
+                               "TOP": top, "first_downs": first_downs, "first_downs_allowed": first_downs_allowed, "pass_yards": pass_yards,
+                               "pass_yards_allowed": pass_yards_allowed, "penalty_yards": penalty_yards, "plays": plays,
+                               "rush_yards": rush_yards, "rush_yards_allowed": rush_yards_allowed, "sacks": sacks, "sacked": sacked,
+                               "takeaways": takeaways, "turnovers": turnovers, "total_yards": total_yards,
+                               "total_yards_allowed": total_yards_allowed}
+
+            away_dictionary = {"ha": "away", "team": opponent, "opp": team, "third_per": third_allowed, "third_per_allowed": third,
+                               "TOP": a_top, "first_downs": first_downs_allowed, "first_downs_allowed": first_downs,
+                               "pass_yards": pass_yards_allowed, "pass_yards_allowed": pass_yards, "penalty_yards": a_penalty_yards,
+                               "plays": a_plays, "rush_yards": rush_yards_allowed, "rush_yards_allowed": rush_yards, "sacks": sacked,
+                               "sacked": sacks, "takeaways": turnovers, "turnovers": takeaways, "total_yards": total_yards_allowed,
+                               "total_yards_allowed": total_yards}
+
+            stats_dicts = [home_dictionary, away_dictionary]
+
+            nfl = pd.DataFrame(stats_dicts)
+
+            data = run_score_model(nfl, team, opponent)
+
+            return render_template("results_score.html", data=data)
         else:
             return render_template("prediction_model.html")
-
-
-@app.route("/test-fill")
-def test_fill():
-
-    return render_template("test_fill.html")
 
 
 @app.route("/teams-data")
@@ -119,20 +108,13 @@ def teams_data():
     return jsonify(data)
 
 
-@app.route("/data")
-def data():
-    pass
-
-
 @app.route("/tables")
 def tables():
-
     return render_template("tables.html")
 
 
 @app.route("/howitworks")
 def howitworks():
-
     return render_template("howitworks.html")
 
 
