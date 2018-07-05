@@ -35,7 +35,8 @@ form_names = ["team", "opp", "third_per", "third_per_allowed", "TOP", "first_dow
               "plays", "rush_yards", "rush_yards_allowed", "sacked", "sacks", "takeaways",
               "total_yards", "total_yards_allowed", "turnovers"]
 
-teams_abbrev = {
+form_select = {
+    "default": "Choose...",
     "ARI": "Arizona Cardinals",
     "ATL": "Atlanta Falcons",
     "BAL": "Baltimore Ravens",
@@ -79,13 +80,13 @@ def run_win_loss_model(model_input_df, team, opponent):
     data = {}
 
     if encoded_prediction[0] == 0:
-        for key, value in teams_abbrev.items():
+        for key, value in form_select.items():
             if key == opponent:
                 data["winner"] = value
             elif key == team:
                 data["loser"] = value
     elif encoded_prediction[0] == 2:
-        for key, value in teams_abbrev.items():
+        for key, value in form_select.items():
             if key == team:
                 data["winner"] = value
             elif key == opponent:
