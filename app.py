@@ -28,10 +28,10 @@ def results():
     if request.method == "POST":
         if request.form["team"] == "default" or request.form["opp"] == "default":
             flash("Please pick two teams.", "danger")
-            return redirect(url_for("test_predict"))
+            return redirect(url_for("predict"))
         elif request.form["team"] == request.form["opp"]:
             flash("A team cannot play with itself.", "danger")
-            return redirect(url_for("test_predict"))
+            return redirect(url_for("predict"))
 
         try:
             team = request.form["team"]
@@ -58,16 +58,16 @@ def results():
             turnovers = float(request.form["turnovers"])
         except ValueError:
             flash("Input fields must be numbers.", "danger")
-            return redirect(url_for("test_predict"))
+            return redirect(url_for("predict"))
         except KeyError:
             flash("Please fill out all fields.", "danger")
-            return redirect(url_for("test_predict"))
+            return redirect(url_for("predict"))
 
         try:
             chosen_model = request.form["model_name"]
         except KeyError:
             flash("Please choose a model.", "danger")
-            return redirect(url_for("test_predict"))
+            return redirect(url_for("predict"))
 
         if chosen_model == "winloss":
             # Deep neural network model
@@ -119,7 +119,7 @@ def results():
 
             return render_template("results_score.html", data=data)
         else:
-            return render_template(url_for("test_predict"))
+            return redirect(url_for("predict"))
 
 
 @app.route("/teams-data")
@@ -152,12 +152,6 @@ def data_2015_2017():
     football_data = df.to_dict('split')
 
     return jsonify(football_data)
-
-
-@app.route("/test-results", methods=["GET", "POST"])
-def test_results():
-    form = PredictionForm()
-    return render_template("test_prediction_model.html", title="Prediction Model", form=form)
 
 
 if __name__ == "__main__":
