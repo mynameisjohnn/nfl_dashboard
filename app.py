@@ -15,73 +15,59 @@ def home():
 
 @app.route("/predictions")
 def predict():
-    return render_template("prediction_model.html")
-
-
-@app.route("/test-predictions", methods=["GET", "POST"])
-def test_predict():
     form = PredictionForm()
     select_options = [(key, value) for key, value in form_select.items()]
     form.team.choices = select_options
     form.opp.choices = select_options
 
-    try:
-        third_per = float(request.form["third_per"])
-        third_per_allowed = float(request.form["third_per_allowed"])
-        top = float(request.form["top"])
-        a_top = float(request.form["a_top"])
-        first_downs = float(request.form["first_downs"])
-        first_downs_allowed = float(request.form["first_downs_allowed"])
-        pass_yards = float(request.form["pass_yards"])
-        pass_yards_allowed = float(request.form["pass_yards_allowed"])
-        penalty_yards = float(request.form["penalty_yards"])
-        a_penalty_yards = float(request.form["a_penalty_yards"])
-        plays = float(request.form["plays"])
-        a_plays = float(request.form["a_plays"])
-        rush_yards = float(request.form["rush_yards"])
-        rush_yards_allowed = float(request.form["rush_yards_allowed"])
-        sacked = float(request.form["sacked"])
-        sacks = float(request.form["sacks"])
-        takeaways = float(request.form["takeaways"])
-        total_yards = float(request.form["total_yards"])
-        total_yards_allowed = float(request.form["total_yards_allowed"])
-        turnovers = float(request.form["turnovers"])
-    except ValueError:
-        flash("Input fields must be numbers.", "danger")
-        return redirect(url_for("test_predict"))
-
-
-    return render_template("test_prediction_model.html", form=form)
+    return render_template("prediction_model.html", form=form)
 
 
 @app.route("/results", methods=["GET", "POST"])
 def results():
     if request.method == "POST":
+        if request.form["team"] == "default" or request.form["opp"] == "default":
+            flash("Please pick two teams.", "danger")
+            return redirect(url_for("test_predict"))
+        elif request.form["team"] == request.form["opp"]:
+            flash("A team cannot play with itself.", "danger")
+            return redirect(url_for("test_predict"))
 
-        team = request.form["team"]
-        opponent = request.form["opp"]
-        third_per = float(request.form["third_per"])
-        third_per_allowed = float(request.form["third_per_allowed"])
-        top = float(request.form["top"])
-        a_top = float(request.form["a_top"])
-        first_downs = float(request.form["first_downs"])
-        first_downs_allowed = float(request.form["first_downs_allowed"])
-        pass_yards = float(request.form["pass_yards"])
-        pass_yards_allowed = float(request.form["pass_yards_allowed"])
-        penalty_yards = float(request.form["penalty_yards"])
-        a_penalty_yards = float(request.form["a_penalty_yards"])
-        plays = float(request.form["plays"])
-        a_plays = float(request.form["a_plays"])
-        rush_yards = float(request.form["rush_yards"])
-        rush_yards_allowed = float(request.form["rush_yards_allowed"])
-        sacked = float(request.form["sacked"])
-        sacks = float(request.form["sacks"])
-        takeaways = float(request.form["takeaways"])
-        total_yards = float(request.form["total_yards"])
-        total_yards_allowed = float(request.form["total_yards_allowed"])
-        turnovers = float(request.form["turnovers"])
+        try:
+            team = request.form["team"]
+            opponent = request.form["opp"]
+            third_per = float(request.form["third_per"])
+            third_per_allowed = float(request.form["third_per_allowed"])
+            top = float(request.form["top"])
+            a_top = float(request.form["a_top"])
+            first_downs = float(request.form["first_downs"])
+            first_downs_allowed = float(request.form["first_downs_allowed"])
+            pass_yards = float(request.form["pass_yards"])
+            pass_yards_allowed = float(request.form["pass_yards_allowed"])
+            penalty_yards = float(request.form["penalty_yards"])
+            a_penalty_yards = float(request.form["a_penalty_yards"])
+            plays = float(request.form["plays"])
+            a_plays = float(request.form["a_plays"])
+            rush_yards = float(request.form["rush_yards"])
+            rush_yards_allowed = float(request.form["rush_yards_allowed"])
+            sacked = float(request.form["sacked"])
+            sacks = float(request.form["sacks"])
+            takeaways = float(request.form["takeaways"])
+            total_yards = float(request.form["total_yards"])
+            total_yards_allowed = float(request.form["total_yards_allowed"])
+            turnovers = float(request.form["turnovers"])
+        except ValueError:
+            flash("Input fields must be numbers.", "danger")
+            return redirect(url_for("test_predict"))
+        except KeyError:
+            flash("Please fill out all fields.", "danger")
+            return redirect(url_for("test_predict"))
 
-        chosen_model = request.form["model_name"]
+        try:
+            chosen_model = request.form["model_name"]
+        except KeyError:
+            flash("Please choose a model.", "danger")
+            return redirect(url_for("test_predict"))
 
         if chosen_model == "winloss":
             # Deep neural network model
@@ -133,7 +119,7 @@ def results():
 
             return render_template("results_score.html", data=data)
         else:
-            return render_template("prediction_model.html")
+            return render_template(url_for("test_predict"))
 
 
 @app.route("/teams-data")

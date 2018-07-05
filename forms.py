@@ -27,6 +27,7 @@ class PredictionForm(FlaskForm):
     total_yards = DecimalField("Total Yards", validators=[InputRequired()])
     total_yards_allowed = DecimalField("Total Yards", validators=[InputRequired()])
 
-    model_name = RadioField("Models", choices=[("winloss", "Win/Loss Prediction Model"), ("score", "Projected Points Prediction Model ")])
+    model_name = RadioField("Models", choices=[(
+        "winloss", "Win/Loss Prediction Model"), ("score", "Projected Points Prediction Model ")])
 
     submit = SubmitField("SUBMIT")

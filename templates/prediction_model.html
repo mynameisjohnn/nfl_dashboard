@@ -73,6 +73,15 @@
                 <!--/.Card-->
                 <!-- Heading -->
                 <div class="container">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     <form method="POST" action="/results">
                         <div class="row">
                             <!-- Grid column -->
@@ -81,82 +90,48 @@
                                     <div class="container-fluid">
                                         <div class="form-group">
                                             <br>
-                                            <label for="exampleFormControlSelect1">Home Team</label>
-                                            <select class="form-control select_team" id="h_team" name="team">
-                                                <option selected>Choose...</option>
-                                                <option value="ARI">Arizona Cardinals</option>
-                                                <option value="ATL">Atlanta Falcons</option>
-                                                <option value="BAL">Baltimore Ravens</option>
-                                                <option value="BUF">Buffalo Bills</option>
-                                                <option value="CAR">Carolina Panthers</option>
-                                                <option value="CHI">Chicago Bears</option>
-                                                <option value="CIN">Cincinnati Bengals</option>
-                                                <option value="CLE">Cleveland Browns</option>
-                                                <option value="DAL">Dallas Cowboys</option>
-                                                <option value="DEN">Denver Broncos</option>
-                                                <option value="DET">Detroit Lions</option>
-                                                <option value="GBP">Green Bay Packers</option>
-                                                <option value="HOU">Houston Texans</option>
-                                                <option value="IND">Indianapolis Colts</option>
-                                                <option value="JAX">Jacksonville Jaguars</option>
-                                                <option value="KCC">Kansas City Chiefs</option>
-                                                <option value="LAC">Los Angeles Chargers</option>
-                                                <option value="LAR">Los Angeles Rams</option>
-                                                <option value="MIA">Miami Dolphins</option>
-                                                <option value="MIN">Minnesota Vikings</option>
-                                                <option value="NEP">New England Patriots</option>
-                                                <option value="NOS">New Orleans Saints</option>
-                                                <option value="NYG">New York Giants</option>
-                                                <option value="NYJ">New York Jets</option>
-                                                <option value="OAK">Oakland Raiders</option>
-                                                <option value="PHI">Philadelphia Eagles</option>
-                                                <option value="PIT">Pittsburgh Steelers</option>
-                                                <option value="SFO">San Francisco 49ers</option>
-                                                <option value="SEA">Seattle Seahawks</option>
-                                                <option value="TBB">Tampa Bay Buccaneers</option>
-                                                <option value="TEN">Tennessee Titans</option>
-                                                <option value="WAS">Washington Redskins</option>
-                                            </select>
+                                            {{ form.team.label(class="form-control-label") }}
+                                            {{ form.team(class="form-control select_team", id="h_team") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Pass Yards</label>
-                                            <input type="text" class="form-control" id="h_pass" name="pass_yards" placeholder="Pass Yards...">
+                                            {{ form.pass_yards.label(class="form-control-label") }}
+                                            {{ form.pass_yards(class="form-control", id="h_pass", placeholder="Pass Yards...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Rush Yards</label>
-                                            <input type="text" class="form-control" id="h_rush" name="rush_yards" placeholder="Rush Yards...">
+                                            {{ form.rush_yards.label(class="form-control-label") }}
+                                            {{ form.rush_yards(class="form-control", id="h_rush", placeholder="Rush Yards...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Total Yards</label>
-                                            <input type="text" class="form-control" id="h_total" name="total_yards" placeholder="Total Yards...">
+                                            {{ form.total_yards.label(class="form-control-label") }}
+                                            {{ form.total_yards(class="form-control", id="h_total", placeholder="Total Yards...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Time of Possession</label>
-                                            <input type="text" class="form-control" id="h_top" name="TOP" placeholder="Time of Possession...">
+                                            {{ form.top.label(class="form-control-label") }}
+                                            {{ form.top(class="form-control", id="h_top", placeholder="Time of Possession...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">First Downs</label>
-                                            <input type="text" class="form-control" id="h_first" name="first_downs" placeholder="First Downs...">
+                                            {{ form.first_downs.label(class="form-control-label") }}
+                                            {{ form.first_downs(class="form-control", id="h_first", placeholder="First Downs...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Penalty Yards</label>
-                                            <input type="text" class="form-control" id="h_penalty" name="penalty_yards" placeholder="Penalty Yards...">
+                                            {{ form.penalty_yards.label(class="form-control-label") }}
+                                            {{ form.penalty_yards(class="form-control", id="h_penalty", placeholder="Penalty Yards...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Sacks</label>
-                                            <input type="text" class="form-control" id="h_sacks" name="sacks" placeholder="Sacks...">
+                                            {{ form.sacks.label(class="form-control-label") }}
+                                            {{ form.sacks(class="form-control", id="h_sacks", placeholder="Sacks...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Turnovers</label>
-                                            <input type="text" class="form-control" id="h_tos" name="turnovers" placeholder="Turnovers...">
+                                            {{ form.turnovers.label(class="form-control-label") }}
+                                            {{ form.turnovers(class="form-control", id="h_tos", placeholder="Turnovers...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Third Downs</label>
-                                            <input type="text" class="form-control" id="h_tdp" name="third_per" placeholder="Third Downs Percentage...">
+                                            {{ form.third_per.label(class="form-control-label") }}
+                                            {{ form.third_per(class="form-control", id="h_tdp", placeholder="Third Downs Percentage...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Plays</label>
-                                            <input type="text" class="form-control" id="h_plays" name="plays" placeholder="Plays...">
+                                            {{ form.plays.label(class="form-control-label") }}
+                                            {{ form.plays(class="form-control", id="h_plays", placeholder="Plays...") }}
                                         </div>
                                     </div>
                                 </div>
@@ -166,92 +141,63 @@
                                     <div class="container-fluid">
                                         <div class="form-group">
                                             <br>
-                                            <label for="exampleFormControlSelect1">Away Team</label>
-                                            <select class="form-control select_team" id="a_team" name="opp">
-                                                <option selected>Choose...</option>
-                                                <option value="ARI">Arizona Cardinals</option>
-                                                <option value="ATL">Atlanta Falcons</option>
-                                                <option value="BAL">Baltimore Ravens</option>
-                                                <option value="BUF">Buffalo Bills</option>
-                                                <option value="CAR">Carolina Panthers</option>
-                                                <option value="CHI">Chicago Bears</option>
-                                                <option value="CIN">Cincinnati Bengals</option>
-                                                <option value="CLE">Cleveland Browns</option>
-                                                <option value="DAL">Dallas Cowboys</option>
-                                                <option value="DEN">Denver Broncos</option>
-                                                <option value="DET">Detroit Lions</option>
-                                                <option value="GBP">Green Bay Packers</option>
-                                                <option value="HOU">Houston Texans</option>
-                                                <option value="IND">Indianapolis Colts</option>
-                                                <option value="JAX">Jacksonville Jaguars</option>
-                                                <option value="KCC">Kansas City Chiefs</option>
-                                                <option value="LAC">Los Angeles Chargers</option>
-                                                <option value="LAR">Los Angeles Rams</option>
-                                                <option value="MIA">Miami Dolphins</option>
-                                                <option value="MIN">Minnesota Vikings</option>
-                                                <option value="NEP">New England Patriots</option>
-                                                <option value="NOS">New Orleans Saints</option>
-                                                <option value="NYG">New York Giants</option>
-                                                <option value="NYJ">New York Jets</option>
-                                                <option value="OAK">Oakland Raiders</option>
-                                                <option value="PHI">Philadelphia Eagles</option>
-                                                <option value="PIT">Pittsburgh Steelers</option>
-                                                <option value="SFO">San Francisco 49ers</option>
-                                                <option value="SEA">Seattle Seahawks</option>
-                                                <option value="TBB">Tampa Bay Buccaneers</option>
-                                                <option value="TEN">Tennessee Titans</option>
-                                                <option value="WAS">Washington Redskins</option>
-                                            </select>
+                                            {{ form.opp.label(class="form-control-label") }}
+                                            {{ form.opp(class="form-control select_team", id="a_team") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Pass Yards Allowed</label>
-                                            <input type="text" class="form-control" id="a_pass" name="pass_yards_allowed" placeholder="Pass Yards Allowed...">
+                                            {{ form.pass_yards_allowed.label(class="form-control-label") }}
+                                            {{ form.pass_yards_allowed(class="form-control", id="a_pass", placeholder="Pass Yards Allowed...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Rush Yards Allowed</label>
-                                            <input type="text" class="form-control" id="a_rush" name="rush_yards_allowed" placeholder="Rush Yards Allowed...">
+                                            {{ form.rush_yards_allowed.label(class="form-control-label") }}
+                                            {{ form.rush_yards_allowed(class="form-control", id="a_rush", placeholder="Rush Yards Allowed...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Total Yards Allowed</label>
-                                            <input type="text" class="form-control" id="a_total" name="total_yards_allowed" placeholder="Total Yards Allowed...">
+                                            {{ form.total_yards_allowed.label(class="form-control-label") }}
+                                            {{ form.total_yards_allowed(class="form-control", id="a_total", placeholder="Total Yards Allowed...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Away Team Time of Possession</label>
-                                            <input type="text" class="form-control" id="a_top" name="a_TOP" placeholder="Away Team Time of Possession...">
+                                            {{ form.a_top.label(class="form-control-label") }}
+                                            {{ form.a_top(class="form-control", id="a_top", placeholder="Away Team Time of Possession...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">First Downs Allowed</label>
-                                            <input type="text" class="form-control" id="a_first" name="first_downs_allowed" placeholder="First Downs Allowed...">
+                                            {{ form.first_downs_allowed.label(class="form-control-label") }}
+                                            {{ form.first_downs_allowed(class="form-control", id="a_first", placeholder="First Downs Allowed...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Away Penalty Yards</label>
-                                            <input type="text" class="form-control" id="a_penalty" name="a_penalty_yards" placeholder="Away Penalty Yards...">
+                                            {{ form.a_penalty_yards.label(class="form-control-label") }}
+                                            {{ form.a_penalty_yards(class="form-control", id="a_penalty", placeholder="Away Penalty Yards...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Sacked</label>
-                                            <input type="text" class="form-control" id="a_sacks" name="sacked" placeholder="Sacked...">
+                                            {{ form.sacked.label(class="form-control-label") }}
+                                            {{ form.sacked(class="form-control", id="a_sacks", placeholder="Sacked...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Take Aways</label>
-                                            <input type="text" class="form-control" id="a_tos" name="takeaways" placeholder="Take Aways...">
+                                            {{ form.takeaways.label(class="form-control-label") }}
+                                            {{ form.takeaways(class="form-control", id="a_tos", placeholder="Take Aways...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Third Downs Allowed</label>
-                                            <input type="text" class="form-control" id="a_tdp" name="third_per_allowed" placeholder="Third Downs Allowed Percentage...">
+                                            {{ form.third_per_allowed.label(class="form-control-label") }}
+                                            {{ form.third_per_allowed(class="form-control", id="a_tdp", placeholder="Third Downs Allowed Percentage...") }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">Away Plays</label>
-                                            <input type="text" class="form-control" id="a_plays" name="a_plays" placeholder="Away Plays...">
+                                            {{ form.a_plays.label(class="form-control-label") }}
+                                            {{ form.a_plays(class="form-control", id="a_plays", placeholder="Away Plays...") }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12 text-center ">
-                            <input type="radio" name="model_name" value="winloss" style="margin-left:30px">Win/Loss Prediction Model
-                            <input type="radio" name="model_name" value="score" style="margin-left:30px">Projected Points Prediction Model
+                            {% for subfield in form.model_name %}
+                                {{ subfield(style="margin-left: 30px;") }}
+                                {{ subfield.label }}
+                            {% endfor %}
+                            <!-- {{ form.model_name(style="margin-left: 30px;") }} -->
+                            <!-- <input type="radio" name="model_name" value="winloss" style="margin-left:30px">Win/Loss Prediction Model
+                            <input type="radio" name="model_name" value="score" style="margin-left:30px">Projected Points Prediction Model -->
                             <br>
-                            <button type="submit" class="btn btn-primary mx-auto btn-lg ">Submit</button>
+                            {{ form.submit(class="btn btn-primary mx-auto btn-lg")}}
                         </div>
                     </form>
                 </div>
