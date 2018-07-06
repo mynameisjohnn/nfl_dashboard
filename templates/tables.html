@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="../static/img/nfllogo.jpg" />
+    <title>NFL Prediction Dashboard</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed">
+            <img src="../static/img/nfl_logo.png" class="img-fluid animated fadeInLeft wow " data-wow-delay="0.3s" width="200" alt="">
+
+
+            <div class="list-group list-group-flush">
+                <a href="/" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-dashboard mr-3"></i>Dashboard
+                </a>
+                <a href="/predictions" class="list-group-item  list-group-item-action waves-effect">
+                    <i class="fa fa-user mr-3"></i>Prediction Model</a>
+                <a href="/tables" class="list-group-item list-group-item-action active waves-effect">
+                    <i class="fa fa-table mr-3"></i>Tables</a>
+                <a href="/howitworks" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-line-chart mr-3"></i>How It Works</a>
+                <a class="list-group-item list-group-item-action waves-effect" data-target="#fluidModalRightSuccessDemo" data-toggle="modal">
+                    <i class="fa fa-twitter mr-3"></i>Twitter Feed</a>
+
+            </div>
+        </div>
+        </div>
+        <!-- Sidebar -->
+
+        <!--Main layout-->
+        <main class="pt-5 mx-lg-5">
+            <div class="container-fluid mt-5">
+                <!-- Heading -->
+                <div class="card mb-4 wow fadeIn">
+
+                    <!--Card content-->
+                    <div class="card-body d-sm-flex justify-content-between">
+
+                        <h4 class="mb-2 mb-sm-0 pt-1">
+                            <a href="/" target="_blank">Home Page</a>
+                            <span>/</span>
+                            <span>Tables</span>
+                        </h4>
+
+                    </div>
+
+                </div>
+                <!-- Heading -->
+                <!--Grid row-->
+                <div class="row ">
+                    <!--Grid column-->
+                    <div class="col-md-12 mb-4">
+                        <!--Grid row-->
+                        <!--Card-->
+                        <div class="card mb-4">
+                            <!-- Card header -->
+                            <div class="card-header text-center" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+                                Actual vs Predicted - Yearly Averages
+                            </div>
+                            <!--Card content-->
+                            <div class="card-body">
+                                <p>These Line Charts show the Actual and Predicated yearly averages for Points Margin, Points
+                                    For, Points Allowed and Total Points.</p>
+                            </div>
+                        </div>
+                        <!--/.Card-->
+                        <!--Card-->
+                        <div class="card-body">
+                            <div class='tableauPlaceholder' id='viz1530385928934' style='position: relative'>
+                                <noscript>
+                                    <a href='#'>
+                                        <img alt='Actual vs Predicted ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPrediction&#47;ActualvsPredicted&#47;1_rss.png'
+                                            style='border: none' />
+                                    </a>
+                                </noscript>
+                                <object class='tableauViz' style='display:none;'>
+                                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                                    <param name='embed_code_version' value='3' />
+                                    <param name='site_root' value='' />
+                                    <param name='name' value='NFLPrediction&#47;ActualvsPredicted' />
+                                    <param name='tabs' value='no' />
+                                    <param name='toolbar' value='yes' />
+                                    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPrediction&#47;ActualvsPredicted&#47;1.png'
+                                    />
+                                    <param name='animate_transition' value='yes' />
+                                    <param name='display_static_image' value='yes' />
+                                    <param name='display_spinner' value='yes' />
+                                    <param name='display_overlay' value='yes' />
+                                    <param name='display_count' value='yes' />
+                                    <param name='filter' value='publish=yes' />
+                                </object>
+                            </div>
+                            <script type='text/javascript'>var divElement = document.getElementById('viz1530385928934'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '1016px'; vizElement.style.height = '600px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                        </div>
+                        <!--Card-->
+                        <div class="card mb-4">
+                            <!-- Card header -->
+                            <div class="card-header text-center" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+                                Prediction Model Explanation
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <p>The Margin, Total Points, Points For and Points Allowed Residual Scatter Plot Charts shows
+                                    the difference between the actual and project stats per game. The Turnover Margin vs
+                                    Actual and Projected Margin Chart shows the Turnovers in relation to our Predicted Model
+                                    and the Actual result. </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+
+
+                        <div class="card-body text-center">
+                            <div class='tableauPlaceholder' id='viz1530670720115' style='width:300%;position: relative'>
+                                <noscript>
+                                    <a href='#'>
+                                        <img alt='Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLGraphs&#47;Dashboard&#47;1_rss.png'
+                                            style='border: none' />
+                                    </a>
+                                </noscript>
+                                <object class='tableauViz' style='display:none;'>
+                                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                                    <param name='embed_code_version' value='3' />
+                                    <param name='site_root' value='' />
+                                    <param name='name' value='NFLGraphs&#47;Dashboard' />
+                                    <param name='tabs' value='no' />
+                                    <param name='toolbar' value='yes' />
+                                    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLGraphs&#47;Dashboard&#47;1.png'
+                                    />
+                                    <param name='animate_transition' value='yes' />
+                                    <param name='display_static_image' value='yes' />
+                                    <param name='display_spinner' value='yes' />
+                                    <param name='display_overlay' value='yes' />
+                                    <param name='display_count' value='yes' />
+                                    <param name='filter' value='publish=yes' />
+                                </object>
+                            </div>
+                            <script type='text/javascript'>                    var divElement = document.getElementById('viz1530670720115'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '1000px'; vizElement.style.height = '827px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+                        </div>
+
+
+                    </div>
+                    <!--/.Card-->
+                    <!--Card-->
+                    <div class="card mb-4">
+                        <!-- Card header -->
+                        <div class="card-header text-center" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            Accuracy of Prediction Model
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <p>The Margin, Total points, Point For and Points Allowed were predicted based on the 3rd down percentage,
+                                Time of possession, first downs, home/away games, passing yards, penalty yards, plays, rushing
+                                yards, sacked/sacks, takeaways, total_yards and turnovers data of the teams using the OLS
+                                Regression model of the StatsModels. The coefficients and the intercepts were calculated
+                                based on these variables and the data was predicted for each of the teams. The plot below
+                                shows the difference in the Actual value and the Predicted value using our calculations using
+                                Plotly in Python. As seen in the plots, the predicted data was quite close to the zero line.
+                                The yearly averages for the predicted versus actual data also was spot on on quite a few
+                                values.</p>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+                    <!--Carousel Wrapper-->
+                    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                        <!--Indicators-->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+                        </ol>
+                        <!--/.Indicators-->
+                        <!--Slides-->
+                        <div class="carousel-inner" role="listbox">
+                            <!--First slide-->
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/img/predicted_margin.JPG" alt="First slide">
+                            </div>
+                            <!--/First slide-->
+                            <!--Second slide-->
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/img/predicted_points.JPG" alt="Second slide">
+                            </div>
+                            <!--/Second slide-->
+                            <!--Third slide-->
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/img/predicted_points_allowed.JPG" alt="Third slide">
+                            </div>
+                            <!--/Third slide-->
+                            <!--Fourth slide-->
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/img/accuracy.JPG" alt="Fourth slide">
+                            </div>
+                            <!--/Fourth slide-->
+                        </div>
+                        <!--/.Slides-->
+                        <!--Controls-->
+                        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <!--/.Controls-->
+                    </div>
+                    <!--/.Carousel Wrapper-->
+
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-12 mb-4  wow FadeInLeft">
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-2">
+
+                        <!--Card-->
+                        <div class="card">
+                            <!--Section: Modals-->
+                            <section>
+                                <!-- Full Height Modal Right Success Demo-->
+                                <div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                    aria-hidden="true" data-backdrop="false">
+                                    <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
+                                        <!--Content-->
+                                        <div class="modal-content">
+                                            <!--Body-->
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <div class="text-center">
+                                                    <i class="fa fa-twitter fa-4x mb-3 animated rotateIn " style="color:	#00FFFF"></i>
+                                                    <p>Latest Twitter Feed</p>
+                                                </div>
+                                                <a class="twitter-timeline" href="https://twitter.com/NFL?ref_src=twsrc%5Etfw"></a>
+                                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>>
+                                            </div>
+                                        </div>
+                                        <!-- /.First row-->
+                                    </div>
+
+                                </div>
+                                <!--/.Card-->
+
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+
+                </div>
+        </main>
+        <!--Main layout-->
+
+        <!--Footer-->
+        <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+
+            <!--Call to action-->
+            <div class="pt-4">
+                <a class="btn btn-outline-white" href="https://github.com/mynameisjohnn/6_asians_and_a_shilpasian.git" target="_blank" role="button">Check Out Our Github
+                    <i class="fa fa-github ml-2"></i>
+                </a>
+                <a class="btn btn-outline-white" href="https://six-asians-and-a-shilpasian.herokuapp.com/" target="_blank" role="button">Heroku App DEMO
+                    <i class="fa fa-heroku ml-2"></i>
+                </a>
+            </div>
+            <!--/.Call to action-->
+
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="../static/js/jquery-3.3.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../static/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
+
+
+
+</body>
+
+</html>

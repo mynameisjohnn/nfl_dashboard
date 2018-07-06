@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="icon" href="../static/img/nfllogo.jpg">
+        <title>NFL Prediction Dashboard </title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="../static/css/mdb.min.css" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="../static/css/style.min.css" rel="stylesheet">
+    </head>
+
+    <body class="grey lighten-3">
+
+        <!--Main Navigation-->
+        <header>
+            <!-- Sidebar -->
+            <div class="sidebar-fixed position-fixed">
+                <img src="../static/img/nfl_logo.png" class="img-fluid animated fadeInLeft wow " data-wow-delay="0.3s" width="200" alt="">
+                <div class="list-group list-group-flush">
+                    <a href="/" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fa fa-dashboard mr-3"></i>Dashboard
+                    </a>
+                    <a href="/predictions" class="list-group-item active list-group-item-action waves-effect">
+                        <i class="fa fa-user mr-3"></i>Prediction Model</a>
+                    <a href="/tables" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fa fa-table mr-3"></i>Tables</a>
+                    <a href="/howitworks" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fa fa-line-chart mr-3"></i>How It Works</a>
+                    <a class="list-group-item list-group-item-action waves-effect" data-target="#fluidModalRightSuccessDemo" data-toggle="modal">
+                        <i class="fa fa-twitter mr-3"></i>Twitter Feed</a>
+                </div>
+            </div>
+            <!-- Sidebar -->
+        </header>
+
+        <!--Main layout-->
+        <main class="pt-5 mx-lg-5">
+            <div class="container-fluid mt-5">
+                <!-- Heading -->
+                <div class="card mb-4 wow fadeIn">
+                    <!--Card content-->
+                    <div class="card-body d-sm-flex justify-content-between">
+                        <h4 class="mb-2 mb-sm-0 pt-1">
+                            <a href="/">Home Page</a>
+                            <span>/</span>
+                            <span>Prediction Model</span>
+                        </h4>
+                    </div>
+                </div>
+                <!--Card-->
+                <div class="card mb-4">
+                    <!-- Card header -->
+                    <div class="card-header text-center" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+                        Prediction Model Explanation
+                    </div>
+                    <!--Card content-->
+                    <div class="card-body">
+                        <li>Pick two teams you want to see head-to-head. 
+                        <li>All stat fields will automatically pre-fill with 2017
+                            averages after selecting the teams.</li>
+                        <li>Modify the pre-filled statistics to your liking. </li>
+                        <li>Click the Submit button and let's beat Vegas!</li>
+                        <li>Choose the type of Prediction Model you would like to run: The Winner of a Game or the Project Points
+                            for a Game.</li>
+                    </div>
+                </div>
+                <!--/.Card-->
+                <!-- Heading -->
+                <div class="container">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form method="POST" action="/results">
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="container-fluid">
+                                        <div class="form-group">
+                                            <br>
+                                            {{ form.team.label(class="form-control-label") }}
+                                            {{ form.team(class="form-control select_team", id="h_team") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.pass_yards.label(class="form-control-label") }}
+                                            {{ form.pass_yards(class="form-control", id="h_pass", placeholder="Pass Yards...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.rush_yards.label(class="form-control-label") }}
+                                            {{ form.rush_yards(class="form-control", id="h_rush", placeholder="Rush Yards...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.total_yards.label(class="form-control-label") }}
+                                            {{ form.total_yards(class="form-control", id="h_total", placeholder="Total Yards...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.top.label(class="form-control-label") }}
+                                            {{ form.top(class="form-control", id="h_top", placeholder="Time of Possession...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.first_downs.label(class="form-control-label") }}
+                                            {{ form.first_downs(class="form-control", id="h_first", placeholder="First Downs...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.penalty_yards.label(class="form-control-label") }}
+                                            {{ form.penalty_yards(class="form-control", id="h_penalty", placeholder="Penalty Yards...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.sacks.label(class="form-control-label") }}
+                                            {{ form.sacks(class="form-control", id="h_sacks", placeholder="Sacks...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.turnovers.label(class="form-control-label") }}
+                                            {{ form.turnovers(class="form-control", id="h_tos", placeholder="Turnovers...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.third_per.label(class="form-control-label") }}
+                                            {{ form.third_per(class="form-control", id="h_tdp", placeholder="Third Downs Percentage...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.plays.label(class="form-control-label") }}
+                                            {{ form.plays(class="form-control", id="h_plays", placeholder="Plays...") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="container-fluid">
+                                        <div class="form-group">
+                                            <br>
+                                            {{ form.opp.label(class="form-control-label") }}
+                                            {{ form.opp(class="form-control select_team", id="a_team") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.pass_yards_allowed.label(class="form-control-label") }}
+                                            {{ form.pass_yards_allowed(class="form-control", id="a_pass", placeholder="Pass Yards Allowed...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.rush_yards_allowed.label(class="form-control-label") }}
+                                            {{ form.rush_yards_allowed(class="form-control", id="a_rush", placeholder="Rush Yards Allowed...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.total_yards_allowed.label(class="form-control-label") }}
+                                            {{ form.total_yards_allowed(class="form-control", id="a_total", placeholder="Total Yards Allowed...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.a_top.label(class="form-control-label") }}
+                                            {{ form.a_top(class="form-control", id="a_top", placeholder="Away Team Time of Possession...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.first_downs_allowed.label(class="form-control-label") }}
+                                            {{ form.first_downs_allowed(class="form-control", id="a_first", placeholder="First Downs Allowed...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.a_penalty_yards.label(class="form-control-label") }}
+                                            {{ form.a_penalty_yards(class="form-control", id="a_penalty", placeholder="Away Penalty Yards...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.sacked.label(class="form-control-label") }}
+                                            {{ form.sacked(class="form-control", id="a_sacks", placeholder="Sacked...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.takeaways.label(class="form-control-label") }}
+                                            {{ form.takeaways(class="form-control", id="a_tos", placeholder="Take Aways...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.third_per_allowed.label(class="form-control-label") }}
+                                            {{ form.third_per_allowed(class="form-control", id="a_tdp", placeholder="Third Downs Allowed Percentage...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.a_plays.label(class="form-control-label") }}
+                                            {{ form.a_plays(class="form-control", id="a_plays", placeholder="Away Plays...") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center ">
+                            {% for subfield in form.model_name %}
+                                {{ subfield(style="margin-left: 30px;") }}
+                                {{ subfield.label }}
+                            {% endfor %}
+                            <!-- {{ form.model_name(style="margin-left: 30px;") }} -->
+                            <!-- <input type="radio" name="model_name" value="winloss" style="margin-left:30px">Win/Loss Prediction Model
+                            <input type="radio" name="model_name" value="score" style="margin-left:30px">Projected Points Prediction Model -->
+                            <br>
+                            {{ form.submit(class="btn btn-primary mx-auto btn-lg")}}
+                        </div>
+                    </form>
+                </div>
+                <!--Grid row-->
+                <!--Card-->
+                <div class="card">
+                    <!--Section: Modals-->
+                    <section>
+                        <!-- Full Height Modal Right Success Demo-->
+                        <div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                            aria-hidden="true" data-backdrop="false">
+                            <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
+                                <!--Content-->
+                                <div class="modal-content">
+                                    <!--Body-->
+                                    <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="text-center">
+                                            <i class="fa fa-twitter fa-4x mb-3 animated rotateIn " style="color: #00FFFF;"></i>
+                                            <p>Latest Twitter Feed</p>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!--Grid row-->
+                                    <!--Card-->
+                                    <div class="card">
+                                        <!--Section: Modals-->
+                                        <section>
+                                            <!-- Full Height Modal Right Success Demo-->
+                                            <div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                                aria-hidden="true" data-backdrop="false">
+                                                <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
+                                                    <!--Content-->
+                                                    <div class="modal-content">
+                                                        <!--Body-->
+                                                        <div class="modal-body">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <div class="text-center">
+                                                                <i class="fa fa-twitter fa-4x mb-3 animated rotateIn " style="color: #00FFFF;"></i>
+                                                                <p>Latest Twitter Feed</p>
+                                                            </div>
+                                                            <a class="twitter-timeline" href="https://twitter.com/NFL?ref_src=twsrc%5Etfw"></a>
+                                                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.First row-->
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <!--Main layout-->
+
+        <!--Footer-->
+        <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+            <!--Call to action-->
+            <div class="pt-4">
+                <a class="btn btn-outline-white" href="https://github.com/mynameisjohnn/6_asians_and_a_shilpasian.git" target="_blank" role="button">Check Out Our Github
+                    <i class="fa fa-github ml-2"></i>
+                </a>
+                <a class="btn btn-outline-white" href="https://six-asians-and-a-shilpasian.herokuapp.com/" target="_blank" role="button">Heroku App DEMO
+                    <i class="fa fa-heroku ml-2"></i>
+                </a>
+            </div>
+            <!--/.Call to action-->
+            <hr class="my-4">
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="../static/js/jquery-3.3.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../static/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+        <script src="{{ url_for('static', filename='js/autofill.js') }}"></script>
+
+    </body>
+
+</html>
