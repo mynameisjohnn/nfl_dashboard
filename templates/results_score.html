@@ -3,36 +3,85 @@
 <html lang="en">
 
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Football!</title>
-    <link rel="icon" href="../static/img/nfllogo.jpg">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-      crossorigin="anonymous">
-    <!-- External styles -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="../static/img/nfllogo.jpg" />
+    <title>Neural Network Prediction</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../static/css/style.min.css" rel="stylesheet">
   </head>
 
   <body>
-    <header></header>
 
-    <main>
-      <div class="container">
-        <h1>{{ data.team }} {{ data.team_points }}</h1>
-        <h1>{{ data.opponent }} {{ data.opponent_points }}</h1>
-        <h1>{{ data.margin }}</h1>
+    <!--Main Navigation-->
+    <header>
+      <!-- Sidebar -->
+      <div class="sidebar-fixed position-fixed">
+        <img src="../static/img/nfl_logo.png" class="img-fluid animated fadeInLeft wow " data-wow-delay="0.3s" width="200" alt="">
+        <div class="list-group list-group-flush">
+          <a href="/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fa fa-dashboard mr-3"></i>Dashboard
+          </a>
+          <a href="/predictions" class="list-group-item active list-group-item-action waves-effect">
+            <i class="fa fa-user mr-3"></i>Prediction Model</a>
+          <a href="/tables" class="list-group-item list-group-item-action waves-effect">
+            <i class="fa fa-table mr-3"></i>Tables</a>
+          <a href="/howitworks" class="list-group-item list-group-item-action waves-effect">
+            <i class="fa fa-line-chart mr-3"></i>How It Works</a>
+          <a class="list-group-item list-group-item-action waves-effect" data-target="#fluidModalRightSuccessDemo" data-toggle="modal">
+            <i class="fa fa-twitter mr-3"></i>Twitter Feed</a>
+        </div>
+      </div>
+      <!-- Sidebar -->
+    </header>
+
+    <main class="pt-5 mx-lg-5">
+      <div class="container-fluid mt-5">
+        <!-- Heading -->
+        <div class="card mb-4 wow fadeIn">
+          <!--Card content-->
+          <div class="card-body d-sm-flex justify-content-between">
+            <h4 class="mb-2 mb-sm-0 pt-1">
+              <a href="/">Home Page</a>
+              <span>/</span>
+              <span>
+                <a href="{{ url_for('predict')}}">Prediction Model</a>
+              </span>
+              <span>/</span>
+              <span>Regression Prediction Results</span>
+            </h4>
+          </div>
+        </div>
+        <div class="container">
+          <h1>{{ data.team }} {{ data.team_points }}</h1>
+          <h1>{{ data.opponent }} {{ data.opponent_points }}</h1>
+          <h1>{{ data.margin }} Point Margin</h1>
+        </div>
       </div>
     </main>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-      crossorigin="anonymous"></script>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../static/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../static/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <!-- External JavaScript -->
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   </body>
