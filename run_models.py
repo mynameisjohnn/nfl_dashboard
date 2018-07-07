@@ -132,9 +132,9 @@ def run_win_loss_model(model_input_df, team, opponent):
             elif key == opponent:
                 data["loser"] = value
         for key, value in team_logos.items():
-            if key == opponent:
+            if key == team:
                 data["winner_logo"] = value
-            elif key == team:
+            elif key == opponent:
                 data["loser_logo"] = value
 
     # Clear the model session
