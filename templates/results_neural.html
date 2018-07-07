@@ -60,8 +60,14 @@
           </div>
         </div>
         <div class="container">
-          <h1>{{ data.winner }} wins!</h1>
-          <h1>{{ data.loser }} loses!</h1>
+          <div class="row">
+            <div class="col-md-6 d-flex justify-content-center wow fadeInLeft">
+              <h1>{{ data.winner }} wins!</h1>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center wow fadeInRight">
+              <h1>{{ data.loser }} loses!</h1>
+            </div>
+          </div>
         </div>
         <div class="col-md-12 mb-4  wow FadeInLeft">
           <div class="col-md-4 mb-2">
