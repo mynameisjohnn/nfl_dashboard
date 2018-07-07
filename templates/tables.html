@@ -84,14 +84,14 @@
                         <!--/.Card-->
                         <!--Card-->
                         <div class="card-body">
-                            <div class='tableauPlaceholder' id='viz1530385928934' style='position: relative'>
+                            <div class='tableauPlaceholder mx-auto' id='viz1530385928934' style='position: relative'>
                                 <noscript>
                                     <a href='#'>
                                         <img alt='Actual vs Predicted ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPrediction&#47;ActualvsPredicted&#47;1_rss.png'
                                             style='border: none' />
                                     </a>
                                 </noscript>
-                                <object class='tableauViz' style='display:none;'>
+                                <object class='tableauViz ' style='display:none;'>
                                     <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
                                     <param name='embed_code_version' value='3' />
                                     <param name='site_root' value='' />
@@ -131,7 +131,7 @@
 
 
                         <div class="card-body text-center">
-                            <div class='tableauPlaceholder' id='viz1530670720115' style='width:300%;position: relative'>
+                            <div class='tableauPlaceholder mx-auto' id='viz1530670720115' style='width:300%;position: relative'>
                                 <noscript>
                                     <a href='#'>
                                         <img alt='Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLGraphs&#47;Dashboard&#47;1_rss.png'
@@ -179,13 +179,14 @@
                                 shows the difference in the Actual value and the Predicted value using our calculations using
                                 Plotly in Python. As seen in the plots, the predicted data was quite close to the zero line.
                                 The yearly averages for the predicted versus actual data also was spot on on quite a few
-                                values.</p>
+                                values.
+                            </p>
                         </div>
 
                     </div>
                     <!--/.Card-->
                     <!--Carousel Wrapper-->
-                    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div id="carousel-example-1z" class="carousel slide carousel-fade mx-auto" data-ride="carousel">
                         <!--Indicators-->
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
@@ -231,6 +232,45 @@
                     </div>
                     <!--/.Carousel Wrapper-->
 
+                    <!--/.Card-->
+                    <!--Card-->
+                    <br>
+                    <div class="card mb-4">
+                        <!-- Card header -->
+                        <div class="card-header text-center" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            Prediction Model Explanation
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <p>This sankey (alluvial) diagram illustrates an elo scoring system for the entirety of the 2016
+                                NFL season. Predicted win %, elo scoring based on h2h matchups/locales are aggregated (on
+                                average) by Conference, Division, and Team tiers. The standard score for teams is 1500, higher
+                                scores indicate an improved probability of victory, and scores lower than the standard suggest
+                                the chances of a loss are greater. Unexpected results (i.e. win when predicted loss) result
+                                in a greater overall score for the following week's game and vice versa. </p>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+
+
+                    <div class="card-body text-center">
+                        <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script>
+                        <div class='tableauPlaceholder' style='width: 1536px; height: 670px;'>
+                            <object class='tableauViz' width='1536' height='670' style='display:none;'>
+                                <param name='host_url' value='https%3A%2F%2Fus-west-2b.online.tableau.com%2F' />
+                                <param name='embed_code_version' value='3' />
+                                <param name='site_root' value='&#47;t&#47;elosankey' />
+                                <param name='name' value='eloskfinal&#47;Dashboard1' />
+                                <param name='tabs' value='no' />
+                                <param name='toolbar' value='yes' />
+                                <param name='showAppBanner' value='false' />
+                                <param name='filter' value='iframeSizedToWindow=true' />
+                            </object>
+                        </div>
+                    </div>
                     <!--/.Card-->
 
                 </div>
