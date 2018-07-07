@@ -16,6 +16,7 @@
     <link href="../static/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="../static/css/style.min.css" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet">
   </head>
 
   <body>
@@ -59,13 +60,15 @@
             </h4>
           </div>
         </div>
-        <div class="container">
+        <div id="results" class="container">
           <div class="row">
-            <div class="col-md-6 d-flex justify-content-center wow fadeInLeft">
-              <h1>{{ data.team }} {{ data.team_points }}</h1>
+            <div class="col-md-6 d-flex align-items-center flex-column wow fadeInLeft">
+              <img src="/static/img/Player_logo/helmet/{{ data.team_logo }}" height="450">
+              <h1 class="display-4">{{ data.team }} {{ data.team_points }}</h1>
             </div>
-            <div class="col-md-6 d-flex justify-content-center wow fadeInRight">
-              <h1>{{ data.opponent }} {{ data.opponent_points }}</h1>
+            <div class="col-md-6 d-flex align-items-center flex-column wow fadeInRight">
+              <img src="/static/img/Player_logo/helmet/{{ data.opponent_logo }}" height="450">
+              <h1 class="display-4">{{ data.opponent }} {{ data.opponent_points }}</h1>
             </div>
           </div>
           <!-- <h1>{{ data.margin }} Point Margin</h1> -->

@@ -71,6 +71,41 @@ form_select = {
     "WAS": "Washington Redskins"
 }
 
+team_logos = {
+    "ARI": "arizona-cardinals-helmet-logo.png",
+    "ATL": "atlanta-falcons-helmet-logo.png",
+    "BAL": "baltimore-ravens-helmet-logo.png",
+    "BUF": "buffalo-bills-helmet-logo.png",
+    "CAR": "carolina-panthers-helmet-logo.png",
+    "CHI": "chicago-bears-helmet-logo.png",
+    "CIN": "cincinnati-bengals-helmet-logo.png",
+    "CLE": "cleveland-browns-helmet-logo.png",
+    "DAL": "dallas-cowboys-helmet-logo.png",
+    "DEN": "denver-broncos-helmet-logo.png",
+    "DET": "detroit-lions-helmet-logo.png",
+    "GBP": "green-bay-packers-helmet-logo.png",
+    "HOU": "houston-texans-helmet-logo.png",
+    "IND": "indianapolis-colts-helmet.png",
+    "JAX": "jacksonville-jaguars-helmet-logo.png",
+    "KCC": "kansas-city-chiefs-helmet-logo.png",
+    "LAC": "los-angeles-chargers-helmet-logo.png",
+    "LAR": "los-angeles-rams-helmet-logo.png",
+    "MIA": "miami-dolphins-helmet-logo.png",
+    "MIN": "minnesota-vikings-helmet-logo.png",
+    "NEP": "new-england-patriots-helmet-logo.png",
+    "NOS": "new-orleans-saints-helmet-logo.png",
+    "NYG": "new-york-giants-helmet-logo.png",
+    "NYJ": "new-york-jets-helmet-logo.png",
+    "OAK": "oakland-raiders-helmet-logo.png",
+    "PHI": "philadelphia-eagles-helmet-logo.png",
+    "PIT": "pittsburgh-steelers-helmet-logo.png",
+    "SFO": "san-francisco-49ers-helmet-logo.png",
+    "SEA": "seattle-seahawks-helmet-logo.png",
+    "TBB": "tampa-bay-buccaneers-helmet-logo.png",
+    "TEN": "tennessee-titans-helmet-logo.png",
+    "WAS": "washington-redskins-helmet-logo.png"
+}
+
 
 def run_win_loss_model(model_input_df, team, opponent):
     deep_model = load_model("models/deep_neural_model_trained.h5")
@@ -85,12 +120,22 @@ def run_win_loss_model(model_input_df, team, opponent):
                 data["winner"] = value
             elif key == team:
                 data["loser"] = value
+        for key, value in team_logos.items():
+            if key == opponent:
+                data["winner_logo"] = value
+            elif key == team:
+                data["loser_logo"] = value
     elif encoded_prediction[0] == 2:
         for key, value in form_select.items():
             if key == team:
                 data["winner"] = value
             elif key == opponent:
                 data["loser"] = value
+        for key, value in team_logos.items():
+            if key == opponent:
+                data["winner_logo"] = value
+            elif key == team:
+                data["loser_logo"] = value
 
     # Clear the model session
     backend.clear_session()
@@ -216,6 +261,12 @@ def run_score_model(nfl, team, opponent):
     data["opponent"] = opponent
     data["opponent_points"] = opponent_points
     data["margin"] = margin
+
+    for key, value in team_logos.items():
+        if key == team:
+            data["team_logo"] = value
+        elif key == opponent:
+            data["opponent_logo"] = value
 
     # print(f'{team} {team_points} @ {opponent} {opponent_points}')
 
