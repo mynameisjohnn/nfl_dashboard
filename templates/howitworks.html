@@ -109,12 +109,21 @@
         <!--Card content-->
         <div class="card-body">
             <p>In our head to head model we utilized the following Python libraries for Deep Neural Network: </p>
+            <br>
             <img src="../static/img/howitworks1.JPG"></img>
+            <br>
+            <br>
             <p>We used data from 2009-2015 to train the data and used 2015-2017 matchups as the testing set. We initially used historical wins and losses to determine baseline targets:</p>
+            <br>
             <p class="font-weight-bold">Base Neural Network - Loss: 1.15, Accuracy: 0.561</p>
+            <br>
             <p>In order to improve the model, we incorporated historical stats which consisted of yards, turnovers, 3rd down %, sacks and other elements. Using stats to predict outcomes tremendously improved the model as we saw accuracy improve nearly 47%: </p>
+            <br>
             <p class="font-weight-bold">Adjusted Neural Network - Loss: 1.38, Accuracy: 0.822</p>
+            <br>
             <p class="font-weight-bold">Learning Index</p>
+            <br>
+            <img src="../static/img/howitworks5.JPG"></img>
 
 
         </div>
@@ -132,11 +141,16 @@
         <div class="card-body">
             <p>We also incorporated a multivariable Regression model with the OLS package from the StatsModels library in Python. This model predicts margin, total points scored in a game and uses both of these to predict a final score in a game given the same stats as the logistic regression. </p>
             <img src="../static/img/howitworks3.JPG"></img>
+            <br>
             <p>For the score model, we used the same 2009-20017 data set comparing actual margins, total points, points for and points against with their respective prediction and graphed the residuals. Each team is overlaid so that we can see which team we are the most and least accurate with, if we wanted to. The regression output of our margin of victory we have an R score of 0.797</p>
+            <br>
             <img src="../static/img/howitworks4.JPG"></img>
-            <img src="../static/img/howitworks5.JPG"></img>
-            <p>The coefficient values are then used against each variable to determine the predicted margin of victory for each match up using the input below:</p>
+            <br>
             <img src="../static/img/howitworks6.JPG"></img>
+            <br><br>
+            <p>The coefficient values are then used against each variable to determine the predicted margin of victory for each match up using the input below:</p>
+            <br>
+            <img src="../static/img/howitworks7.JPG"></img>
             <br>
             <br>
             <p class="font-weight-bold">Good Luck! *This site is for entertainment purposes only, if you do decide to gamble, please do so responsibly*</p>
