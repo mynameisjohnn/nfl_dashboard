@@ -30,7 +30,7 @@ def results():
             flash("Please pick two teams.", "danger")
             return redirect(url_for("predict"))
         elif request.form["team"] == request.form["opp"]:
-            flash("A team cannot play with itself.", "danger")
+            flash("A team cannot play against itself.", "danger")
             return redirect(url_for("predict"))
 
         try:
