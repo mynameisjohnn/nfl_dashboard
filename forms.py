@@ -6,8 +6,8 @@ from wtforms.validators import InputRequired
 class PredictionForm(FlaskForm):
     team = SelectField("Home Team")
     opp = SelectField("Away Team")
-    third_per = DecimalField("Third Percentage", validators=[InputRequired()])
-    third_per_allowed = DecimalField("Third Percentage", validators=[InputRequired()])
+    third_per = DecimalField("Third Down Percentage", validators=[InputRequired()])
+    third_per_allowed = DecimalField("Third Down Percentage", validators=[InputRequired()])
     top = DecimalField("Time of Possession", validators=[InputRequired()])
     a_top = DecimalField("Time of Possession", validators=[InputRequired()])
     first_downs = DecimalField("First Downs", validators=[InputRequired()])
